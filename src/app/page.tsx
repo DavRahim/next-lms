@@ -297,6 +297,16 @@ export default function Home() {
 
               </div>
 
+              <div className="flex flex-row items-start">
+                <div className="border-r-4 border-t-4 border-transparent">
+                  <div className="ml-16 h-16 w-16 rounded-bl-full border-b-4 border-l-4 border-dashed border-green-700"></div>
+                </div>
+                <div className="flex-auto border-t-4 border-transparent">
+                  <div className="h-16 border-b-4 border-dashed border-green-700"></div>
+                </div>
+                <div className="mr-16 mt-16 h-16 w-16 rounded-tr-full border-r-4 border-t-4 border-dashed border-green-700"></div>
+              </div>
+
             </div>
           </div>
 
