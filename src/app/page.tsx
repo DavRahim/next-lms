@@ -469,6 +469,35 @@ export default function Home() {
               </h2>
             </div>
           </div>
+
+          <div className="grid max-w-screen-lg lg:grid-cols-2 sm:mx-auto">
+            <div className="grid grid-cols-2 gap-2 FounderImages">
+
+            </div>
+            <div className="flex flex-col justify-center text-gray-900 border-l-2 border-indigo-500 ps-[50px] instructorDetailsBorder">
+              <div>
+                <div className="text-sm text-gray-700 capitalize tracking-wide">
+                  <p> Md Abdur Rahim is afull stack web developer. They has been involved in web development and software profession for 5+ years.</p>
+                  <br />
+                  <p>  At the time of class 9, Out of love for programming and passion for teaching people, Eshan founded Hablu Programmer Platform in February 2021 which has around 600+ programming related video tutorials.</p>
+                  <br />
+                  <p>More than 250,000 people are learning free programming from Hablu Programmer YouTube channel and public Facebook group.</p>
+                </div>
+                <div className="mt-5">
+                  <p className="font-semibold">Md Abdur Rahim</p>
+                  <p className="font-semibold">Founder &amp; CEO - Rs Programmer</p>
+                  <Image
+                    src={'/logo-secendery.png'}
+                    className="h-auto max-w-md webLogo"
+                    alt="logo"
+                    width={268}
+                    height={75}
+                  />
+                  <p className="text-[15px] mt-3 text-gray-600">Trade License: TRAD/6NOGUPN/000340/2023 </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </MaxWidthWrapper>
       </section>
 

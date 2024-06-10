@@ -94,3 +94,10 @@
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent
 }
+
+.webLogo {
+  width: 150px;
+  margin-top: 10px;
+  height: 38px;
+  margin-left: -4px;
+}
