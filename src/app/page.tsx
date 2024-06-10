@@ -365,7 +365,7 @@ export default function Home() {
                       Step 3
                     </div>
                     <div className="text-sm text-gray-500">
-                      Learning
+                      THINKING
                     </div>
 
                   </div>
@@ -386,16 +386,16 @@ export default function Home() {
                         <span className="text-gradient p-2">Step 1: Learning</span>
                       </div>
                       <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
-                        Everyday Particular Chapter
+                        Critical Thinking Ability
                       </div>
                       <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
-                        Everyday We Will Give You Access Only One Chapter For Your Productive Learning.There Is No Chance Of Falling Behind, With A Module-Wise Structured Study Plan Packed With Quizzes, Assignments & Practice Home Work For Interview Preparation.
+                        You Will Have A Practice Day After Every 2-3 Chapter. There Will Be A Conceptual Session On That Practice Day. So Not Only You Are Learning Or Practicing, But You Will Also Get Time To Think About How Exactly Programming Happens And You Can Get Ready For Problem-Solving And Real-Life Implementation.
                       </div>
 
                     </div>
                     <div>
                       <Image
-                        src={"/step1.svg"}
+                        src={"/step3.svg"}
                         className="pointer-events-none h-auto object-cover p-4 md:max-w-sm"
                         alt="step1"
                         width={643}
