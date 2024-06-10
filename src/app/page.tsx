@@ -347,6 +347,69 @@ export default function Home() {
                 </div>
 
               </div>
+              {/* 4 */}
+              <div className="flex flex-row-reverse items-start">
+                <div className="border-l-4 border-t-4 border-transparent">
+                  <div className="mr-16 h-16 w-16 rounded-br-full border-b-4 border-r-4 border-dashed border-green-700"></div>
+                </div>
+                <div className="flex-auto border-t-4 border-transparent">
+                  <div className="h-16 border-b-4 border-dashed border-green-700"></div>
+                </div>
+                <div className="ml-16 mt-16 h-16 w-16 rounded-tl-full border-l-4 border-t-4 border-dashed border-green-700"></div>
+              </div>
+              {/* 5 */}
+              <div className="flex flex-row">
+                <div className="hidden flex-col items-center md:flex">
+                  <div className="text-gradient mr-4 flex w-32 flex-col items-center justify-center rounded py-5 uppercase">
+                    <div className="text-3xl font-black text-gray-500">
+                      Step 3
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      Learning
+                    </div>
+
+                  </div>
+                  <div className="h-full border-l-4 border-transparent">
+                    <div className="mr-4 h-full border-l-4 border-dashed border-green-600">
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div className="flex-auto text-gray-900">
+                  <div className="flex flex-col items-center text-center md:flex-row">
+                    <div
+                      className="flex-auto"
+                    >
+                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 md:hidden">
+                        <span className="text-gradient p-2">Step 1: Learning</span>
+                      </div>
+                      <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
+                        Everyday Particular Chapter
+                      </div>
+                      <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
+                        Everyday We Will Give You Access Only One Chapter For Your Productive Learning.There Is No Chance Of Falling Behind, With A Module-Wise Structured Study Plan Packed With Quizzes, Assignments & Practice Home Work For Interview Preparation.
+                      </div>
+
+                    </div>
+                    <div>
+                      <Image
+                        src={"/step1.svg"}
+                        className="pointer-events-none h-auto object-cover p-4 md:max-w-sm"
+                        alt="step1"
+                        width={643}
+                        height={341}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              {/* 6 */}
+              
+
+
             </div>
           </div>
 
