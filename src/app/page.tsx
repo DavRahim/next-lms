@@ -3,7 +3,15 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { ArrowDown, Star } from "lucide-react";
 import Image from "next/image";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+
+// import required modules
+import { EffectCards } from 'swiper/modules';
+import Profile from "@/components/Profile";
 
 export default function Home() {
   return (
@@ -472,7 +480,7 @@ export default function Home() {
 
           <div className="grid max-w-screen-lg lg:grid-cols-2 sm:mx-auto">
             <div className="grid grid-cols-2 gap-2 FounderImages">
-
+              <Profile/>
             </div>
             <div className="flex flex-col justify-center text-gray-900 border-l-2 border-indigo-500 ps-[50px] instructorDetailsBorder">
               <div>
