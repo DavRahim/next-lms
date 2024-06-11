@@ -13,6 +13,7 @@ import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 import Profile from "@/components/Profile";
 import Link from "next/link";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Home() {
   return (
@@ -514,7 +515,7 @@ export default function Home() {
         <MaxWidthWrapper className='py-24'>
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
-              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900'>
                 ExpandYourCareer{' '}
                 <span className='relative px-2 bg-green-600 text-white'>
                   Opportunity
@@ -755,6 +756,81 @@ export default function Home() {
             </div>
 
 
+          </div>
+        </MaxWidthWrapper>
+      </section>
+
+      <section>
+        <MaxWidthWrapper className='py-24'>
+          <div className='mb-12 px-6 lg:px-8'>
+            <div className='mx-auto max-w-2xl sm:text-center'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900'>
+                Frequently Asked{' '}
+                <span className='relative px-2 bg-green-600 text-white'>
+                  Questions
+                </span>{' '}
+              </h2>
+            </div>
+          </div>
+          <div className="mt-12">
+            <dl className="space-y-8">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[19px]">How Can I Get The Course Videos?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger className="text-[19px]">How Much Time Will Take To Finish The Course?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger className="text-[19px]">What I Will Learn From This Course?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-4">
+                  <AccordionTrigger className="text-[19px]">What should I do if I get stuck somewhere while following the course?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger className="text-[19px]">How do you conduct online classes? Do you only provide recorded classes?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-6">
+                  <AccordionTrigger className="text-[19px]">How to pay the course fee? Is it in one go or installments are available?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-7">
+                  <AccordionTrigger className="text-[19px]">How Can I Get The Course Videos?</AccordionTrigger>
+                  <AccordionContent className="text-[16px]">
+                    Course Videos Will Be Pre-Recorded & Weekly Live Session. You Have To Create An Account And Register For This Course. From The Beginning, Videos Will Be Distributed In One Chapter Every Day. Each Chapter Typically Has 3 To 8 Videos. You Must Watch These Videos Within 24 Hours Of Our Release.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </dl>
           </div>
         </MaxWidthWrapper>
       </section>
