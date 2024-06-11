@@ -46,7 +46,6 @@ const Profile = (props: Props) => {
                     />
                 </SwiperSlide>
             </Swiper>
-
         </>);
 };
 
