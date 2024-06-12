@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
           </Link>
           <div className="h-full flex items-center space-x-4">
             <Link
-              href='/'
+              href='/courses'
               className={buttonVariants({
                 size: 'sm',
                 variant: 'ghost',
@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
               Courses
             </Link>
             <Link
-              href='/'
+              href='/policy'
               className={buttonVariants({
                 size: 'sm',
                 variant: 'ghost',
@@ -62,7 +62,7 @@ const Navbar = (props: Props) => {
         </div>
       </MaxWidthWrapper>
     </nav>
-);
+  );
 };
 
 export default Navbar;
