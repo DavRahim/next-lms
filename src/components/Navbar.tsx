@@ -40,7 +40,7 @@ const Navbar = (props: Props) => {
               About Us
             </Link>
             <Link
-              href='/'
+              href='/login'
               className={buttonVariants({
                 size: 'sm',
                 variant: 'ghost',

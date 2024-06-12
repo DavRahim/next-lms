@@ -77,9 +77,9 @@ const Page = () => {
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Enter Your Email</FormLabel>
+                                        <FormLabel>Enter Your Password</FormLabel>
                                         <FormDescription>
-                                            The email address you registered with.
+                                            Password must be at least 8 characters long and contain at least 1 letter and 1 number.
                                         </FormDescription>
                                         <FormControl>
                                             <Input placeholder="anyPassword1971" {...field} />
