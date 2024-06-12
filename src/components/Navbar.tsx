@@ -32,7 +32,7 @@ const Navbar = (props: Props) => {
               Privacy Policy
             </Link>
             <Link
-              href='/'
+              href='/about'
               className={buttonVariants({
                 size: 'sm',
                 variant: 'ghost',
