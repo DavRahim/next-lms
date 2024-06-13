@@ -1,5 +1,5 @@
 
-## CaseCobra - A Modern Fullstack E-Commerce Shop for Custom Phone Cases
+## RsLms  - A Modern Fullstack Learning Management system for RsLms
 
 Built with the Next.js 14 App Router, Postgres, TypeScript, Tailwind & Kinde Auth
 Pictures of you![flower_shop](https://github.com/DavRahim/rose_day/assets/117851075/5f2da790-056b-4f0a-9e5f-a3146a9ae74d)
@@ -22,7 +22,11 @@ Pictures of you![flower_shop](https://github.com/DavRahim/rose_day/assets/117851
 ### Getting started
 To get started with this project, run
  
- https://github.com/DavRahim/next-lms
+```
+$ https://github.com/DavRahim/next-lms
+
+```
+
 and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
 ###  :file_folder: File Structure
