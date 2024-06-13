@@ -5,19 +5,19 @@ Built with the Next.js 14 App Router, Postgres, TypeScript, Tailwind & Kinde Aut
 Pictures of you![flower_shop](https://github.com/DavRahim/rose_day/assets/117851075/5f2da790-056b-4f0a-9e5f-a3146a9ae74d)
 
 ## Features
-. 🛠️ Complete shop built from scratch in Next.js 14
-💻 Beautiful landing page included
-🎨 Custom artworks made by a professional illustrator
-💳 Secret admin dashboard to manage orders
-🖥️ Drag-and-drop file uploads
-🛍️ Customers can purchase directly from you
-🌟 Clean, modern UI on top of shadcn-ui
-🛒 Completely custom phone case configurator
-🔑 Authentication using Kinde
-✉️ Beautiful thank-you email after purchase
-✅ Apple-inspired configuration design
-⌨️ 100% written in TypeScript
-🎁 ...much more
+- 🛠️ Complete shop built from scratch in Next.js 14
+- 💻 Beautiful landing page included
+- 🎨 Custom artworks made by a professional illustrator
+- 💳 Secret admin dashboard to manage orders
+- 🖥️ Drag-and-drop file uploads
+- 🛍️ Customers can purchase directly from you
+- 🌟 Clean, modern UI on top of shadcn-ui
+- 🛒 Completely custom phone case configurator
+- 🔑 Authentication using Kinde
+- ✉️ Beautiful thank-you email after purchase
+- ✅ Apple-inspired configuration design
+- ⌨️ 100% written in TypeScript
+- 🎁 ...much more
 
 ### Getting started
 To get started with this project, run
