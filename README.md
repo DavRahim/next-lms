@@ -14,7 +14,7 @@ Pictures of you![flower_shop](https://github.com/DavRahim/rose_day/assets/117851
 - 🛍️ Customers can purchase directly from you
 - 🌟 Clean, modern UI on top of shadcn-ui
 - 🛒 Completely custom phone case configurator
-- 🔑 Authentication using Kinde
+- 🔑 Authentication using Auth js
 - ✉️ Beautiful thank-you email after purchase
 - ✅ Apple-inspired configuration design
 - ⌨️ 100% written in TypeScript
