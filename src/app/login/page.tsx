@@ -31,7 +31,6 @@ const Page = () => {
             password: ""
         },
     });
-  console.log(form);
     const { toast } = useToast()
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
