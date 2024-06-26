@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { Providers } from "./Provider";
 
 const league_spartan = League_Spartan({ subsets: ["latin"] });
 
@@ -20,14 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={league_spartan.className}>
-        <Navbar />
-        <main className='flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]'>
-          <div className='flex-1 flex flex-col h-full'>
-           {children}
-          </div>
-          <Footer />
-          <Toaster />
-        </main>
+        <Providers>
+          <Navbar />
+          <main className='flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]'>
+            <div className='flex-1 flex flex-col h-full'>
+              {children}
+            </div>
+            <Footer />
+            <Toaster />
+          </main>
+        </Providers>
       </body>
     </html>
   );
