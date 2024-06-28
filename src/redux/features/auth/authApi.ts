@@ -1,11 +1,12 @@
 import { apiSlice } from "../api/apiSlice";
+import { useRegistration } from "./authSlice";
 
 
 
 type RegistrationResponse = {
+    data: any;
     message: string;
-    success: boolean;
-    data: any
+    activationToken: string
 }
 
 type RegistrationData = {};
@@ -15,14 +16,30 @@ export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         registration: builder.mutation<RegistrationResponse, RegistrationData>({
             query: (data) => ({
-                url: "register",
+                url: "/users/register",
                 method: "POST",
                 body: data,
                 credentials: "include" as const
             }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const result = await queryFulfilled;
+                    console.log(result?.data?.data?.activationToken);
+                    dispatch(
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        useRegistration({
+                            token: result?.data?.data?.activationToken
+                        })
+                    )
+                } catch (error: any) {
+                    console.log(error)
+                }
+            }
         })
     })
 })
 
+
+export const { useRegistrationMutation } = authApi
 
 
