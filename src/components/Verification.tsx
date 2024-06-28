@@ -7,6 +7,7 @@ import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { z } from "zod";
 
 
@@ -16,9 +17,11 @@ const FormSchema = z.object({
         message: "Your one-time password must be 6 characters.",
     }),
 })
-type Props = {};
+type Props = {
+    data: any
+};
 
-const Verification = (props: Props) => {
+const Verification = ({data}: Props) => {
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -27,9 +30,8 @@ const Verification = (props: Props) => {
         },
     })
 
-
     function onSubmit(data: z.infer<typeof FormSchema>) {
-        console.log(data);
+        
         toast({
             title: "You submitted the following values:",
             description: (
