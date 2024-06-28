@@ -1,5 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
-import { useRegistration } from "./authSlice";
+import { useRegistration, userLoggedIn } from "./authSlice";
 
 
 
@@ -45,10 +45,37 @@ export const authApi = apiSlice.injectEndpoints({
                 }
             }),
         }),
+        login: builder.mutation({
+            query: ({ email, password }) => ({
+                url: "/users/login",
+                method: "POST",
+                body: {
+                    email,
+                    password
+                },
+                credentials: "include" as const
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const result = await queryFulfilled;
+                    console.log(result);
+                    dispatch(
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        userLoggedIn({
+                            accessToken: result.data.data.accessToken,
+                            user: result.data.data.user
+                        })
+                    )
+                } catch (error: any) {
+                    console.log(error)
+                }
+            }
+
+        }),
     })
 })
 
 
-export const { useRegistrationMutation, useActivationMutation} = authApi
+export const { useRegistrationMutation, useActivationMutation, useLoginMutation } = authApi
 
 

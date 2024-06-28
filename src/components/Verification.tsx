@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { toast } from "@/components/ui/use-toast";
+import { useActivationMutation } from "@/redux/features/auth/authApi";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { z } from "zod";
@@ -17,11 +18,9 @@ const FormSchema = z.object({
         message: "Your one-time password must be 6 characters.",
     }),
 })
-type Props = {
-    data: any
-};
 
-const Verification = ({data}: Props) => {
+
+const Verification = () => {
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -30,15 +29,33 @@ const Verification = ({data}: Props) => {
         },
     })
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
-        
-        toast({
-            title: "You submitted the following values:",
-            description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-                </pre>
-            ),
+    const { token } = useSelector((state: any) => state.auth);
+    const [activation, { isSuccess, error }] = useActivationMutation()
+
+    useEffect(() => {
+        if (isSuccess) {
+            toast({
+                title: "You submitted the following values:",
+                description: (
+                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                         use is successfully register 
+                    </pre>
+                ),
+            })
+        }
+        if (error) {
+            toast({
+                title: "You submitted the following values:",
+                description: "code is error"
+            })
+        }
+        console.log(error);
+    }, [isSuccess, error,])
+
+    const  onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        await activation({
+            activation_token: token ,
+            activation_code: data.pin,
         })
     }
     return (

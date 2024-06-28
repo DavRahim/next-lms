@@ -68,7 +68,6 @@ const Page = (props: Props) => {
     const { toast } = useToast()
     const [register, { data, error, isSuccess }] = useRegistrationMutation();
     const [verify, setVerify] = useState(false)
-    const { token } = useSelector((state: any) => state.auth);
     useEffect(() => {
         if (isSuccess) {
             toast({

@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useToast } from "@/components/ui/use-toast";
 import Image from "next/image";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { ToastAction } from "@/components/ui/toast";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -31,17 +33,27 @@ const Page = () => {
             password: ""
         },
     });
-    const { toast } = useToast()
+    const [login, { data, isSuccess, error }] = useLoginMutation();
+    const { toast } = useToast();
+    useEffect(() => {
+        if (isSuccess) {
+            toast({
+                title: "Uh oh! YOU LOGIN SUCCESSFULLY.",
+                description: "There was a problem with your request.",
+            })
+            console.log(data);
+        } else if (error) {
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem with your request.",
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            })
+        }
+    }, [isSuccess, error, data, toast])
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
-        toast({
-            title: "You submitted the following values:",
-            description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-                </pre>
-            ),
-        })
+    const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        await login({ email: data.email, password: data.password })
     }
     return (
         <MaxWidthWrapper>
