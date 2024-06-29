@@ -1,5 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
-import { useRegistration, userLoggedIn } from "./authSlice";
+import { useRegistration, userLoggedIn, userLoggedOut } from "./authSlice";
 
 
 
@@ -72,10 +72,29 @@ export const authApi = apiSlice.injectEndpoints({
             }
 
         }),
+        logOut: builder.mutation({
+            query: () => ({
+                url: "/users/logout",
+                method: "POST",
+                credentials: "include" as const
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const result = await queryFulfilled;
+                    // console.log(result);
+                    dispatch(
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        userLoggedOut()
+                    )
+                } catch (error: any) {
+                    console.log(error)
+                }
+            }
+        })
     })
 })
 
 
-export const { useRegistrationMutation, useActivationMutation, useLoginMutation } = authApi
+export const { useRegistrationMutation, useActivationMutation, useLoginMutation, useLogOutMutation } = authApi
 
 
