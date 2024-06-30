@@ -9,6 +9,7 @@ import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { ArrowRight } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
+
 type Props = {};
 
 const Navbar = (props: Props) => {

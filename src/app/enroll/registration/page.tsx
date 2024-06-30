@@ -82,7 +82,7 @@ const Page = (props: Props) => {
                 setVerify(true)
             }
 
-            console.log(data);
+            // console.log(data);
         } else if (error) {
             toast({
                 title: "You submitted the following values:",
