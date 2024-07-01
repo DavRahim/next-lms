@@ -8,13 +8,21 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { ArrowRight } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
-
+import { useLogoutUserMutation } from "@/redux/features/auth/authApi";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const { user } = useSelector((state: any) => state.auth)
   const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
 
+  const [logoutUser, { data: logoutData, isSuccess }] = useLogoutUserMutation()
+
+  const logOut = async () => {
+    await logoutUser({});
+  }
+  console.log(logoutData);
   console.log(userData);
   return (
     <nav className='sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all'>
@@ -58,18 +66,18 @@ const Navbar = (props: Props) => {
             </Link>
             <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
             {
-              isLoading ? ("") : (userData ? (
+              isLoading ? ("") : (user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Avatar className="border-[2px] border-green-500 shadow-2xl">
-                      <AvatarImage src={userData?.data?.avatar?.url || ""} alt="@shadcn" />
-                      <AvatarFallback>{userData?.data?.name || "AR"}</AvatarFallback>
+                      <AvatarImage src={user.avatar?.url || ""} alt="@shadcn" />
+                      <AvatarFallback>{user.name || "AR"}</AvatarFallback>
                     </Avatar>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
                     <DropdownMenuItem>My Account</DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <DropdownMenuItem onClick={logOut}>Logout</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (<Link
