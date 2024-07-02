@@ -12,6 +12,8 @@ import { useToast } from "@/components/ui/use-toast";
 import Image from "next/image";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { ToastAction } from "@/components/ui/toast";
+import { useRouter } from 'next/navigation';
+import { useSelector } from "react-redux";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -33,15 +35,17 @@ const Page = () => {
             password: ""
         },
     });
-    const [login, { data, isSuccess, error }] = useLoginMutation();
+    const [login, { data: loginData, isSuccess, error }] = useLoginMutation();
     const { toast } = useToast();
+    const router = useRouter()
+    const { user } = useSelector((state: any) => state.auth)
     useEffect(() => {
-        if (isSuccess) {
+        if (isSuccess && loginData) {
             toast({
                 title: "Uh oh! YOU LOGIN SUCCESSFULLY.",
                 description: "There was a problem with your request.",
             })
-            console.log(data);
+            router.push('/');
         } else if (error) {
             toast({
                 variant: "destructive",
@@ -50,11 +54,12 @@ const Page = () => {
                 action: <ToastAction altText="Try again">Try again</ToastAction>,
             })
         }
-    }, [isSuccess, error, data, toast])
+    }, [isSuccess, error, loginData, toast, router])
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         await login({ email: data.email, password: data.password })
     }
+    if (user) return router.push('/');
     return (
         <MaxWidthWrapper>
             <div className="flex flex-col gap-6 lg:flex-row lg:gap-20 py-10">

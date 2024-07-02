@@ -18,6 +18,7 @@ import { ArrowRight } from "lucide-react";
 import { useRegistrationMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
 import Verification from "@/components/Verification";
+import { useRouter } from "next/navigation";
 type Props = {};
 
 const FormSchema = z.object({
@@ -67,7 +68,9 @@ const Page = (props: Props) => {
     });
     const { toast } = useToast()
     const [register, { data, error, isSuccess }] = useRegistrationMutation();
+    const { user } = useSelector((state: any) => state.auth)
     const [verify, setVerify] = useState(false)
+    const router = useRouter()
     useEffect(() => {
         if (isSuccess) {
             toast({
@@ -102,6 +105,7 @@ const Page = (props: Props) => {
         formData.append("avatar", data.avatar)
         await register(formData)
     }
+    if (user) return router.push('/');
     return (
         <>
             {verify ?

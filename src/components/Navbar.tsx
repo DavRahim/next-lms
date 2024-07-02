@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
@@ -10,20 +10,27 @@ import { ArrowRight } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useLogoutUserMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
+import { useToast } from "./ui/use-toast";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const { user } = useSelector((state: any) => state.auth)
   const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
-
-  const [logoutUser, { data: logoutData, isSuccess }] = useLogoutUserMutation()
+  const [logoutUser, { data: logoutData, isSuccess }] = useLogoutUserMutation();
+  const { toast } = useToast()
 
   const logOut = async () => {
     await logoutUser({});
   }
-  console.log(logoutData);
-  console.log(userData);
+  useEffect(() => {
+
+    if (isSuccess) {
+      toast({
+        description: "Logout successfully",
+      })
+    }
+  }, [isSuccess, toast])
   return (
     <nav className='sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all'>
       <MaxWidthWrapper>
