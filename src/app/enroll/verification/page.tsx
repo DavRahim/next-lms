@@ -5,8 +5,10 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { z } from "zod";
 
 
@@ -26,7 +28,8 @@ const Page = (props: Props) => {
             pin: "",
         },
     })
-
+    const { user } = useSelector((state: any) => state.auth)
+    const router = useRouter()
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
         console.log(data);
@@ -39,46 +42,47 @@ const Page = (props: Props) => {
             ),
         })
     }
+    if (user) return router.push('/');
     return (
-    <div className="py-10">
-        <div className="w-full space-y-8 mb-8">
-            <div>
-                <h1 className="text-center text-gray-900 text-4xl font-semibold">
-                    <span className="text-green-600">Email Verification</span> RsLms
-                </h1>
-                <p className="subtitle mx-auto w-full text-center">Please check your email: mdabdurrahi184275@gmail.com to activate your account</p>
+        <div className="py-10">
+            <div className="w-full space-y-8 mb-8">
+                <div>
+                    <h1 className="text-center text-gray-900 text-4xl font-semibold">
+                        <span className="text-green-600">Email Verification</span> RsLms
+                    </h1>
+                    <p className="subtitle mx-auto w-full text-center">Please check your email: mdabdurrahi184275@gmail.com to activate your account</p>
+                </div>
             </div>
-        </div>
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-                <FormField
-                    control={form.control}
-                    name="pin"
-                    render={({ field }) => (
-                        <FormItem className="mx-auto">
-                            <FormLabel>One-Time Password</FormLabel>
-                            <FormControl>
-                                <InputOTP maxLength={4} {...field}>
-                                    <InputOTPGroup>
-                                        <InputOTPSlot index={0} />
-                                        <InputOTPSlot index={1} />
-                                        <InputOTPSlot index={2} />
-                                        <InputOTPSlot index={3} />
-                                    </InputOTPGroup>
-                                </InputOTP>
-                            </FormControl>
-                            <FormDescription>
-                                Please enter the one-time password sent to your email.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <Button type="submit">Submit</Button>
-            </form>
-        </Form>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+                    <FormField
+                        control={form.control}
+                        name="pin"
+                        render={({ field }) => (
+                            <FormItem className="mx-auto">
+                                <FormLabel>One-Time Password</FormLabel>
+                                <FormControl>
+                                    <InputOTP maxLength={4} {...field}>
+                                        <InputOTPGroup>
+                                            <InputOTPSlot index={0} />
+                                            <InputOTPSlot index={1} />
+                                            <InputOTPSlot index={2} />
+                                            <InputOTPSlot index={3} />
+                                        </InputOTPGroup>
+                                    </InputOTP>
+                                </FormControl>
+                                <FormDescription>
+                                    Please enter the one-time password sent to your email.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit">Submit</Button>
+                </form>
+            </Form>
 
-    </div>
+        </div>
 
     );
 };
