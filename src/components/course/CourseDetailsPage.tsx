@@ -1,4 +1,5 @@
 import React from "react";
+import CourseDetails from "./CourseDetails";
 
 
 type Props = {
@@ -6,7 +7,10 @@ type Props = {
 };
 
 const CourseDetailsPage = ({ id }: Props) => {
-    return <div>CourseDetailsPage</div>;
+    return (
+    <div>
+        <CourseDetails />
+    </div>);
 };
 
 export default CourseDetailsPage;
