@@ -1,10 +1,125 @@
 import Ratings from "@/lib/Ratings";
 import React from "react";
 import { IoCheckmarkDoneOutline, IoCloseOutline } from "react-icons/io5";
+import CourseContentList from "./CourseContentList";
 
 type Props = {};
 
 const CourseDetails = (props: Props) => {
+    // const data = [{
+    // name: "Laravel stack / LMS project ok",
+    // description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+    // price: 30,
+    // estimatePrice: 90,
+    // tags: "Spruing, LMS, Next14, node js, redis",
+    // level: "intermediats",
+    // demoUrl: "haga231",
+    // benefits: [
+    //     {
+    //         title: "next will as loast of data"
+    //     },
+    //     {
+    //         title: "Next is wonder full  fremwork"
+    //     },
+    //     {
+    //         title: "Next is wonder full  fremwork and full stack"
+    //     }
+    // ],
+    // prerequisites: [
+    //     {
+    //         title: "you need bacis knwolog of MERN Stack"
+    //     },
+    //     {
+    //         title: "you must to complite my simple project "
+    //     },
+    //     {
+    //         title: "you must know that react js and javascript"
+    //     }
+    // ],
+    //     courseData: [
+    //         {
+    //             videoUrl: "hello123",
+    //             title: "Project falme string trp",
+    //             videoSection: "Plaing and Project stracuition",
+    //             description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+    //             videoLength: 12,
+    //             links: [
+    //                 {
+    //                     title: "Source code",
+    //                     url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // }]
+
+    const data = [
+        {
+            videoUrl: "hello123",
+            title: "Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1",
+            videoSection: "Plaing and Project stracuition",
+            description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+            videoLength: 12,
+            links: [
+                {
+                    title: "Source code",
+                    url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+                }
+            ]
+        },
+        {
+            videoUrl: "hello123",
+            title: "Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1",
+            videoSection: "Plaing and Project stracuition",
+            description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+            videoLength: 12,
+            links: [
+                {
+                    title: "Source code",
+                    url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+                }
+            ]
+        },
+        {
+            videoUrl: "hello123",
+            title: "Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1",
+            videoSection: "Plaing and Project stracuition",
+            description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+            videoLength: 12,
+            links: [
+                {
+                    title: "Source code",
+                    url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+                }
+            ]
+        },
+        {
+            videoUrl: "hello123",
+            title: "Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1",
+            videoSection: "Plaing and Project stracuition",
+            description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+            videoLength: 12,
+            links: [
+                {
+                    title: "Source code",
+                    url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+                }
+            ]
+        },
+        {
+            videoUrl: "hello123",
+            title: "Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1",
+            videoSection: "Plaing and Project stracuition",
+            description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",
+            videoLength: 12,
+            links: [
+                {
+                    title: "Source code",
+                    url: "https://github.com/DavRahim?tab=overview&from=2024-03-01&to=2024-03-03"
+                }
+            ]
+        },
+    ]
     return (
         <div className="w-full flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[65%] md:pr-5">
@@ -83,6 +198,9 @@ const CourseDetails = (props: Props) => {
                     <h1 className="text-[25px] font-Poppins font-[600] text-black">
                         Course Overview
                     </h1>
+                    {/* course content list */}
+                    {/* <CourseContentList data={data?.course?.courseData} isDemo={true} /> */}
+                    <CourseContentList data={data} isDemo={true} />
                 </div>
             </div>
         </div>
