@@ -1,7 +1,11 @@
 import Ratings from "@/lib/Ratings";
 import React from "react";
-import { IoCheckmarkDoneOutline, IoCloseOutline } from "react-icons/io5";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import { VscVerifiedFilled } from "react-icons/vsc";
 import CourseContentList from "./CourseContentList";
+import Image from "next/image";
+import Link from "next/link";
+import CoursePlayer from "./CoursePlayer";
 
 type Props = {};
 
@@ -201,6 +205,146 @@ const CourseDetails = (props: Props) => {
                     {/* course content list */}
                     {/* <CourseContentList data={data?.course?.courseData} isDemo={true} /> */}
                     <CourseContentList data={data} isDemo={true} />
+                </div>
+                <br />
+                <br />
+                <div className="w-full">
+                    <h1 className="text-[25px] font-Poppins font-[600] text-black">
+                        Course Details
+
+                    </h1>
+                    <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden text-black">Welcome to the MERN stack Multi Vendor Ecommerce startup series. In this series, you will learn how to build a startup project with the power of MERN and other latest technologies like tailwind CSS, socket io, redux toolkit, etc.
+                        This is a free MERN stack startup series that you will not find on youtube and Udemy right now.
+
+                        support me:
+                        https://www.buymeacoffee.com/shahriariarsajeeb
+
+                        Connects with me
+                        Instagram: https://www.instagram.com/shahriar_sajeeb
+                        Gmail: support@becodemy.com
+
+                        #mern_stack #nodejs #tailwindcss #socketio #becodemy # Multi Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners
+
+                        For business inquiries:
+                        sponsorship@becodemy.com
+                    </p>
+                </div>
+                <br />
+                <br />
+                <div className="w-full">
+                    <div className="md:flex items-center">
+                        <Ratings rating={5} />
+                        <div className="mb-2 800px:mb-[unset]">
+                            <h5 className="text-[25px] font-Poppins text-black dark:text-white">
+                                {Number.isInteger(3) ? 4 : 3} {' '} Course Rating 4 Reviews
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                {/* reviews */}
+                <div className="w-full pb-4 dark:text-white">
+                    <div className="w-full flex">
+                        <div className="w-full flex">
+                            <div className="w-[50px] h-[50px]">
+                                <Image
+                                    src={"https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
+                                    alt=""
+                                    width={50}
+                                    height={50}
+                                    className="w-[50px] h-[50px] rounded-full object-cover"
+                                />
+                            </div>
+                            <div className="mt-2 ml-3">
+                                <h1 className="text-[18px]">Abdur Rahim</h1>
+                                <Ratings rating={5} />
+                                <p>
+                                    it is an amazing course
+                                </p>
+                                <small className="text-[#ffffff83]">
+                                    11/ 12/2020
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {/* commentReplies */}
+                    <div className="w-full flex 800px:ml-16 my-5">
+                        <div className="w-[50px] h-[50px]">
+                            <Image
+                                src={"https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
+                                alt=""
+                                width={50}
+                                height={50}
+                                className="w-[50px] h-[50px] rounded-full object-cover"
+                            />
+
+                        </div>
+                        <div className="pl-2">
+                            <h5 className="text-[20px]">
+                                <div className="flex items-center">
+                                    Abdur Rahim {<VscVerifiedFilled className="text-blue-700 ml-2" size={20} />}
+                                </div>
+                            </h5>
+                            <p>Thank you</p>
+                            <small className="text-[#ffffff83]">
+                                11/ 12/2020
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div className="w-full md:w-[35%] relative">
+                <div className="sticky top-[100px] left-0 z-50 w-full">
+                    <CoursePlayer
+                        title={"title"}
+                        videoUrl={"title"}
+                    />
+                    <div className="flex items-center">
+                        <h1 className="pt-5 text-[25px] text-black dark:text-white">
+                            {/* {data?.course?.price === 0 ? "Free" : data?.course?.price + "$"} */}
+                            Free
+                        </h1>
+                        <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 text-black dark:text-white">
+                            {/* {data?.course?.estimatePrice} $ */}
+                            90 D
+                        </h5>
+                        <h4 className="pl-5 pt-4 text-[22px] text-black dark:text-white">
+                            {/* {discountPercentagePrice} % Off */}
+                            70 % OFF
+                        </h4>
+                    </div>
+                    <div className="flex items-center">
+                        {/* {isPurchased ? (
+                            <Link className={`${styles.button} !w-[200px] my-3 dark:text-white font-Poppins cursor-pointer !bg-red-500`} href={`/course-access/${data?.course?._id}`}>
+                                Enter to course
+                            </Link>
+                        ) : (
+                            <div className={`${styles.button} !w-[160px] dark:text-white my-3 font-Poppins cursor-pointer !bg-red-400`} onClick={handleOrder}>Buy Now {" "}${data?.course?.price}
+                            </div>
+                        )} */}
+                        {true ? (
+                            <Link className={`!w-[200px] my-3 dark:text-white font-Poppins cursor-pointer !bg-red-500`} href={`/course-access`}>
+                                Enter to course
+                            </Link>
+                        ) : (
+                            <div className={`!w-[160px] dark:text-white my-3 font-Poppins cursor-pointer !bg-red-400`}>Buy Now {" "}$ 90
+                            </div>
+                        )}
+                    </div>
+                    <br />
+                    <p className="pb-1 text-black dark:text-white">
+                        Source code included
+                    </p>
+                    <p className="pb-1 text-black dark:text-white">
+                        Full Lifetime access
+                    </p>
+                    <p className="pb-1 text-black dark:text-white">
+                        Certificate of Completion
+                    </p>
+                    <p className="pb-3 800px:pb-1 text-black dark:text-white">
+                        Premium support
+                    </p>
                 </div>
             </div>
         </div>
