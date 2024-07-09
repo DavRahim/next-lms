@@ -6,6 +6,7 @@ import CourseContentList from "./CourseContentList";
 import Image from "next/image";
 import Link from "next/link";
 import CoursePlayer from "./CoursePlayer";
+import { buttonVariants } from "../ui/button";
 
 type Props = {};
 
@@ -268,7 +269,7 @@ const CourseDetails = (props: Props) => {
                         </div>
                     </div>
                     {/* commentReplies */}
-                    <div className="w-full flex 800px:ml-16 my-5">
+                    <div className="w-full flex md:ml-16 my-5">
                         <div className="w-[50px] h-[50px]">
                             <Image
                                 src={"https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
@@ -323,12 +324,12 @@ const CourseDetails = (props: Props) => {
                             <div className={`${styles.button} !w-[160px] dark:text-white my-3 font-Poppins cursor-pointer !bg-red-400`} onClick={handleOrder}>Buy Now {" "}${data?.course?.price}
                             </div>
                         )} */}
-                        {true ? (
+                        {false ? (
                             <Link className={`!w-[200px] my-3 dark:text-white font-Poppins cursor-pointer !bg-red-500`} href={`/course-access`}>
                                 Enter to course
                             </Link>
                         ) : (
-                            <div className={`!w-[160px] dark:text-white my-3 font-Poppins cursor-pointer !bg-red-400`}>Buy Now {" "}$ 90
+                            <div className={buttonVariants({ variant: "default" })}>Buy Now {" "}$ 90
                             </div>
                         )}
                     </div>
