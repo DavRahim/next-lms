@@ -8,9 +8,11 @@ import Link from "next/link";
 import CoursePlayer from "./CoursePlayer";
 import { buttonVariants } from "../ui/button";
 
-type Props = {};
+type Props = {
+    courseDetailsData:any
+};
 
-const CourseDetails = (props: Props) => {
+const CourseDetails = ({courseDetailsData}: Props) => {
     // const data = [{
     // name: "Laravel stack / LMS project ok",
     // description: "MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development MERN Stack Developer | Helping MERN Stack Devs Level Up Their Skills. Posts & Articles about MERN Stack Development",

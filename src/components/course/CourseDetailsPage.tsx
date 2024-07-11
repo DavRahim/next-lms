@@ -1,5 +1,6 @@
 import React from "react";
 import CourseDetails from "./CourseDetails";
+import { useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
 
 
 type Props = {
@@ -7,9 +8,11 @@ type Props = {
 };
 
 const CourseDetailsPage = ({ id }: Props) => {
+    const { data:courseDetailsData, isLoading } = useGetCoursesDetailsQuery(id);
+
     return (
     <div>
-        <CourseDetails />
+            <CourseDetails courseDetailsData={courseDetailsData}/>
     </div>);
 };
 
