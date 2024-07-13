@@ -28,7 +28,7 @@ const Page = (props: Props) => {
             <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] mb-[80px] border-0">
 
                 {
-                    courses?.data && courses?.data?.map((course: any) => <CourseCard course={course} isProfile={userData} key={course._id} />)
+                    courses?.data && courses?.data?.map((course: any) => <CourseCard course={course} key={course._id} />)
                 }
 
                 {/* <Link href={'/'} className="w-full bg-[#fff] backdrop-blur border dark:shadow-[bg-slate-700] rounded-lg p-3 shadow-sm dark:shadow-inner mb-[80px] border-green-200">
