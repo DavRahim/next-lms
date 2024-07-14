@@ -15,6 +15,9 @@ type Props = {
 const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refetch }: Props) => {
 
   const [activeBar, setActiveBar] = useState(0);
+  const [question, setQuestion] = useState("");
+
+  console.log(user, "CourseContentMedia");
 
   return (
     <div className="w-[95%] md:w-[86%] py-4 m-auto">
@@ -40,7 +43,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
 
       <div className="w-full p-4 flex items-center justify-between bg-slate-500 bg-opacity-20 backdrop-blur shadow-[bg-slate-700] rounded shadow-inner">
         {["Overview", "Resource", "Q&A", "Review"].map((text, index) => (
-          <h5 key={index} className={`800px:text-[20px] cursor-pointer ${activeBar === index ? "text-red-500" : "text-black dark:text-white"}`} onClick={() => setActiveBar(index)}>
+          <h5 key={index} className={`md:text-[20px] cursor-pointer ${activeBar === index ? "text-red-500" : "text-black dark:text-white"}`} onClick={() => setActiveBar(index)}>
             {text}
           </h5>
         ))
@@ -61,11 +64,11 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
             {
               data[activeVideo]?.links?.map((item: any, index: number) => (
                 <div key={index} className="mb-5">
-                  <h2 className="800px:text-[20px] 800px:inline-block text-black dark:text-white">
+                  <h2 className="md:text-[20px] md:inline-block text-black dark:text-white">
                     {item?.title && item?.title + ":"}
 
                   </h2>
-                  <a className="inline-block text-[#439c4] 800px:text-[20px] 800px:pl-2 text-black dark:text-white" href={item?.url}>{item?.url}</a>
+                  <a className="inline-block text-[#439c4] md:text-[20px] md:pl-2 text-black dark:text-white" href={item?.url}>{item?.url}</a>
                 </div>
               ))
             }
@@ -75,48 +78,48 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
 
       {
         activeBar === 2 && (
-          <h2>coming soong</h2>
-          // <>
-          //   <div className="flex w-full">
-          //     <Image
-          //       src={user.avatar ? user.avatar.url : ""}
-          //       alt=""
-          //       width={50}
-          //       height={50}
-          //       className="w-[50px] h-[50px] rounded-full object-cover"
-          //     />
-          //     <textarea name="" value={question} onChange={(e) => setQuestion(e.target.value)} id="" cols={40} rows={5} placeholder="Write Your Question ..." className="outline-none bg-transparent ml-3 border border-[#ffffff57] 800px:w-full p-2 rounded w-[90%] 800px:text-[18px] font-Poppins"></textarea>
-          //   </div>
+          <>
+            <div className="flex w-full">
+              <Image
+                src={user.data.avatar ? user.data.avatar.url : ""}
+                alt=""
+                width={50}
+                height={50}
+                className="w-[50px] h-[50px] rounded-full object-cover"
+              />
+              <textarea name="" value={question} onChange={(e) => setQuestion(e.target.value)} id="" cols={40} rows={5} placeholder="Write Your Question ..." className="outline-none bg-transparent ml-3 border border-[#dde7d889] md:w-full p-2 rounded w-[90%] md:text-[18px] font-Poppins"></textarea>
+            </div>
 
-          //   <div className="w-full flex justify-end">
-          //     <div className={`${styles.button} !w-[120px] !h-[40px] text-[18px] mt-5 ${questionCreationLoading && "cursor-no-drop"}`} onClick={questionCreationLoading ? () => { } : handleQuestion}>
-          //       Submit
-          //     </div>
-          //     {/* <div className={`${styles.button} !w-[120px] !h-[40px] text-[18px] mt-5 ${isLoading && "cursor-no-drop"}`} onClick={isLoading ? null : handleCommentSubmit}>
-          //                       Submit
-                             
-          //               </div> */}
+            <div className="w-full flex justify-end">
+              <Button variant={"default"} className={`!w-[120px] !h-[40px] text-[18px] mt-5 ${
+                // questionCreationLoading
+                true
+                && "cursor-no-drop"}`}
+              //  onClick={questionCreationLoading ? () => { } : handleQuestion}
+              >
+                Submit
+              </Button>
+            </div>
+            <br />
+            <br />
+            <div className="w-full h-[1px] bg-[#ffffff3b]">
+              {/* <CommentReply
+                data={data}
+                activeVideo={activeVideo}
+                answer={answer}
+                setAnswer={setAnswer}
+                handleAnswerSubmit={handleAnswerSubmit}
+                user={user}
+                questionId={questionId}
+                setQuestionId={setQuestionId}
+                answerCreationLoading={answerCreationLoading}
 
-          //   </div>
-          //   <br />
-          //   <br />
-          //   <div className="w-full h-[1px] bg-[#ffffff3b]">
-          //     <CommentReply
-          //       data={data}
-          //       activeVideo={activeVideo}
-          //       answer={answer}
-          //       setAnswer={setAnswer}
-          //       handleAnswerSubmit={handleAnswerSubmit}
-          //       user={user}
-          //       questionId={questionId}
-          //       setQuestionId={setQuestionId}
-          //       answerCreationLoading={answerCreationLoading}
+              /> */}
+              coming soong
 
-          //     />
+            </div>
 
-          //   </div>
-
-          // </>
+          </>
         )
       }
     </div>

@@ -25,7 +25,7 @@ const CoursePlayer: FC<Props> = ({ title, videoUrl }) => {
 
     return (
         <div style={{ paddingTop: "56.25%", position: "relative", overflow: "hidden" }}>
-            <iframe src={`https://www.youtube.com/embed/tw0JF-xVniU?si=qVXVGYFa80E50GpJ?rel=0`} style={{
+            <iframe src={`https://www.youtube.com/embed/SUZKhBvxW5c?si=rbfq937UN0CJAjDv`} style={{
                 border: 0,
                 width: "100%",
                 height: "100%",
