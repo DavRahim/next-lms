@@ -537,7 +537,7 @@ export default function Home() {
                 <br />
                 <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
                 <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 800px:ml-0">
+                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
@@ -571,7 +571,7 @@ export default function Home() {
                 <br />
                 <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
                 <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 800px:ml-0">
+                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
@@ -605,7 +605,7 @@ export default function Home() {
                 <br />
                 <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
                 <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 800px:ml-0">
+                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />
                     <Star className='h-4 w-4 stroke-[3px] text-green-600' />

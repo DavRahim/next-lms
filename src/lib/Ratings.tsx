@@ -38,7 +38,7 @@ const Ratings: FC<Props> = ({ rating }) => {
     }
 
 
-    return <div className="flex ml-2 800px:ml-2">{stars}</div>;
+    return <div className="flex ml-2 md:ml-2">{stars}</div>;
 
 };
 
