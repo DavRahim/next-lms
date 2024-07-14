@@ -13,7 +13,7 @@ type Props = {
 const Page = ({ params }: Props) => {
     const id = params.id;
     const { data: userData, isLoading, error, refetch } = useLoadUserQuery(undefined, {});
-    console.log(userData);
+    // console.log(userData);
     useEffect(() => {
         if (userData) {
             const isPurchased = userData?.data?.courses?.find((item: any) => item._id === id)

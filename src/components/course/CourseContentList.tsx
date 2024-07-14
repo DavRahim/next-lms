@@ -62,8 +62,8 @@ const CourseContentList: FC<Props> = (props) => {
                             <div className="w-full flex">
                                 {/* Render video section */}
                                 <div className="w-full flex justify-between items-center">
-                                    <h2 className="text-[22px] text-black dark:text-white">{section}</h2>
-                                    <button className="mr-4 cursor-pointer text-black dark:text-white" onClick={() => toggleSection(section)}>
+                                    <h2 className="text-[22px] text-black ">{section}</h2>
+                                    <button className="mr-4 cursor-pointer text-black " onClick={() => toggleSection(section)}>
                                         {isSectionVisible ? (<BsChevronUp size={20} />) : (<BsChevronDown size={20} />)}
 
                                     </button>
@@ -71,7 +71,7 @@ const CourseContentList: FC<Props> = (props) => {
                                 </div>
 
                             </div>
-                            <h5 className="text-black dark:text-white">
+                            <h5 className="text-black ">
                                 {sectionVideoCount} Lessons .{" "}
                                 {sectionVideoLength < 60 ? sectionVideoLength : sectionContentHours.toFixed(2)}{" "}
                                 {sectionVideoLength > 60 ? "Hours" : "Minutes"}
@@ -86,14 +86,14 @@ const CourseContentList: FC<Props> = (props) => {
                                         const contentLength: number = item.videoLength / 60;
 
                                         return (
-                                            <div key={item?._id} className={`w-full ${videoIndex === props.activeVideo ? "bg-slate-800" : ""} cursor-pointer transition-all p-2`} onClick={() => props.isDemo ? null : props?.setActiveVideo(videoIndex)}>
+                                            <div key={item?._id} className={`w-full ${videoIndex === props.activeVideo ? "bg-gray-100" : ""} cursor-pointer transition-all p-2`} onClick={() => props.isDemo ? null : props?.setActiveVideo(videoIndex)}>
                                                 <div className="">
                                                     <div className="flex">
                                                         <MdOutlineOndemandVideo size={25} className="mr-2" color="#1cdada" />
-                                                        <h1 className="text-[18px] inline-block break-words text-black dark:text-white">{item.title}
+                                                        <h1 className="text-[18px] inline-block break-words text-black ">{item.title}
                                                         </h1>
                                                     </div>
-                                                    <h5 className="pl-8 text-black dark:text-white">
+                                                    <h5 className="pl-8 text-black ">
                                                         {item.videoLength > 60 ? contentLength.toFixed(2) : item.videoLength} {" "}
                                                         {item.videoLength > 60 ? "hours" : "Minutes"}
                                                     </h5>
