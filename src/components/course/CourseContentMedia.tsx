@@ -6,7 +6,7 @@ import { format } from "timeago.js";
 import Image from "next/image";
 import { BiMessage } from "react-icons/bi"
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { useAddNewQuestionMutation, useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
+import { useAddAnswerInQuestionMutation, useAddNewQuestionMutation, useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
 import Ratings from "@/lib/Ratings";
 import { useToast } from "../ui/use-toast";
 
@@ -45,7 +45,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
 
   // addNewQuestion
   const [addNewQuestion, { isSuccess, error, isLoading: questionCreationLoading }] = useAddNewQuestionMutation();
-  
+
   const handleQuestion = () => {
     if (question.length === 0) {
       toast({
@@ -53,6 +53,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
         title: "Question can't be empty",
         description: "There was a problem with your request.",
       })
+      return
     } else {
       // console.log({ question, courseId: id, contentId: data[activeVideo]._id });
       addNewQuestion({ question, courseId: id, contentId: data[activeVideo]._id })
@@ -74,10 +75,58 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
       // })
 
     }
-  }, [isSuccess, refetch, toast])
+    if (error) {
+      if ("data" in error) {
+        toast({
+          variant: "destructive",
+          title: "Answer added Unsuccessfully.",
+          description: "There was a problem with your request.",
+        })
+      }
+    }
+  }, [isSuccess, refetch, toast, error]);
 
 
-  const handleAnswerSubmit = () => { };
+  // addAnswerInQuestion
+  const [addAnswerInQuestion, { isSuccess: answerSuccess, error: answerError, isLoading: answerCreationLoading }] = useAddAnswerInQuestionMutation();
+  const handleAnswerSubmit = () => {
+    if (answer === "") {
+      toast({
+        variant: "destructive",
+        title: "answer can't be empty",
+        description: "There was a problem with your request.",
+      })
+      return
+    }
+    // console.log({ answer, courseId: id, contentId: data[activeVideo]._id, questionId });
+    addAnswerInQuestion({ answer, courseId: id, contentId: data[activeVideo]._id, questionId })
+  }
+  useEffect(() => {
+    if (answerSuccess) {
+      setAnswer("");
+      refetch()
+      toast({
+        description: "Answer added successfully.",
+      })
+      // TODO: Socket connect 
+      // socketId.emit("notification", {
+      //   title: "New Reply Received",
+      //   message: `you have a new Reply in Question ${data[activeVideo].title}`,
+      //   userId: user._id
+      // })
+    }
+    if (answerError) {
+      if ("data" in answerError) {
+        toast({
+          variant: "destructive",
+          title: "Answer added Unsuccessfully.",
+          description: "There was a problem with your request.",
+        })
+      }
+    }
+  }, [answerSuccess, refetch, toast, answerError])
+
+
   const handleReviewSubmit = async () => { }
 
   // console.log(user, "CourseContentMedia");
@@ -172,7 +221,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
                 user={user}
                 questionId={questionId}
                 setQuestionId={setQuestionId}
-              // answerCreationLoading={answerCreationLoading}
+                answerCreationLoading={answerCreationLoading}
               />
             </div>
           </>
@@ -364,7 +413,7 @@ const CommentItem = ({ data, setQuestionId, item, answer, setAnswer, handleAnswe
                 <div className="w-full flex relative text-black dark:text-white">
                   <input type="text" placeholder="Enter your answer ......" value={answer} onChange={(e: any) => setAnswer(e.target.value)}
                     className={`block md:ml-12 mt-2 outline-none bg-transparent border-b dark:border-[#fff] border-[#00000027] p-[5px] w-[95%] ${answer === "" || answerCreationLoading && "cursor-not-allowed"}`} />
-                  <button className="absolute right-0 bottom-1" type="submit" onClick={handleAnswerSubmit} disabled={answer === "" || answerCreationLoading}>
+                  <button className="absolute right-0 bottom-1" type="submit" onClick={handleAnswerSubmit} disabled={answerCreationLoading}>
                     Submit
                   </button>
                 </div>
