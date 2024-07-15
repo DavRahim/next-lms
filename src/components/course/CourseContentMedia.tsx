@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CoursePlayer from "./CoursePlayer";
 import { AiFillStar, AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineStar } from "react-icons/ai";
 import { Button } from "../ui/button";
@@ -6,8 +6,9 @@ import { format } from "timeago.js";
 import Image from "next/image";
 import { BiMessage } from "react-icons/bi"
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
+import { useAddNewQuestionMutation, useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
 import Ratings from "@/lib/Ratings";
+import { useToast } from "../ui/use-toast";
 
 type Props = {
   data: any;
@@ -29,12 +30,52 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
   const [reply, setReply] = useState("");
   const [reviewId, setReviewId] = useState("");
 
+  // toast
+  const { toast } = useToast()
+
+
   // find course
   const { data: courseData, refetch: courseRefetch } = useGetCoursesDetailsQuery(id, { refetchOnMountOrArgChange: true });
   const course = courseData?.data;
 
   // review find
   const isReviewExists = course?.reviews?.find((item: any) => item.user._id === user.data._id);
+
+
+
+  // addNewQuestion
+  const [addNewQuestion, { isSuccess, error, isLoading: questionCreationLoading }] = useAddNewQuestionMutation();
+  
+  const handleQuestion = () => {
+    if (question.length === 0) {
+      toast({
+        variant: "destructive",
+        title: "Question can't be empty",
+        description: "There was a problem with your request.",
+      })
+    } else {
+      // console.log({ question, courseId: id, contentId: data[activeVideo]._id });
+      addNewQuestion({ question, courseId: id, contentId: data[activeVideo]._id })
+    }
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setQuestion("");
+      refetch();
+      toast({
+        description: "Question added successfully.",
+      })
+      // TODO: socket connect
+      // socketId.emit("notification", {
+      //   title: "New Question Received",
+      //   message: `you have a new question in ${data[activeVideo].title}`,
+      //   userId: user._id
+      // })
+
+    }
+  }, [isSuccess, refetch, toast])
+
 
   const handleAnswerSubmit = () => { };
   const handleReviewSubmit = async () => { }
@@ -113,11 +154,8 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
             </div>
 
             <div className="w-full flex justify-end">
-              <Button variant={"default"} className={`!w-[120px] !h-[40px] text-[18px] mt-5 ${
-                // questionCreationLoading
-                true
-                && "cursor-no-drop"}`}
-              //  onClick={questionCreationLoading ? () => { } : handleQuestion}
+              <Button variant={"default"} className={`!w-[120px] !h-[40px] text-[18px] mt-5 ${questionCreationLoading && "cursor-no-drop"}`}
+                onClick={questionCreationLoading ? () => { } : handleQuestion}
               >
                 Submit
               </Button>
