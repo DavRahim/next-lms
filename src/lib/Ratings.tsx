@@ -14,7 +14,7 @@ const Ratings: FC<Props> = ({ rating }) => {
         if (i <= rating) {
             stars.push(
                 <AiFillStar key={i}
-                    size={20} color="#f6b188" className="mr-2 cursor-pointer" />
+                    size={20} color="#F6B100" className="mr-2 cursor-pointer" />
             )
 
 
@@ -24,21 +24,21 @@ const Ratings: FC<Props> = ({ rating }) => {
                 <BsStarHalf
                     key={i}
                     size={17}
-                    color="#f6b188"
+                    color="#F6B100"
                     className="mr-2 cursor-pointer"
 
                 />
             )
         } else {
             stars.push(
-                <AiOutlineStar key={i} size={20} color="#f6b188"
+                <AiOutlineStar key={i} size={20} color="#F6B100"
                     className="mr-2 cursor-pointer" />
             )
         }
     }
 
 
-    return <div className="flex ml-2 md:ml-2">{stars}</div>;
+    return <div className="flex">{stars}</div>;
 
 };
 

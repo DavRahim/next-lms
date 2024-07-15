@@ -18,8 +18,8 @@ const CourseContent = ({ id, user }: Props) => {
                     // TODO: loading component 
                     <h1>Loading Coming soong</h1>
                 ) : (
-                    <div className="w-full grid md:grid-cols-10">
-                        <div className="col-span-7">
+                    <div className="w-full flex">
+                        <div className="w-full md:w-[70%]">
                             <CourseContentMedia
                                 data={data}
                                 activeVideo={activeVideo}
@@ -29,7 +29,7 @@ const CourseContent = ({ id, user }: Props) => {
                                 refetch={refetch}
                             />
                         </div>
-                        <div className="hidden md:block md:col-span-3">
+                        <div className="hidden md:block md:w-[30%]">
                             <CourseContentList setActiveVideo={setActiveVideo} data={data} activeVideo={activeVideo} />
                         </div>
                     </div>
