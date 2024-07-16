@@ -82,7 +82,9 @@ const Navbar = (props: Props) => {
                     </Avatar>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
-                    <DropdownMenuItem>My Account</DropdownMenuItem>
+                    <Link href={"/account"}>
+                      <DropdownMenuItem>My Account</DropdownMenuItem>
+                    </Link>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={logOut}>Logout</DropdownMenuItem>
                   </DropdownMenuContent>

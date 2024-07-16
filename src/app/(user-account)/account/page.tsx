@@ -64,33 +64,33 @@ const Page = (props: Props) => {
             avatar: new File([""], "avatar")
         },
     });
-    const { toast } = useToast()
-    const [register, { data, error, isSuccess }] = useRegistrationMutation();
+    const { toast } = useToast();
     const { user } = useSelector((state: any) => state.auth)
     const [verify, setVerify] = useState(false)
-    const router = useRouter()
-    useEffect(() => {
-        if (isSuccess) {
-            toast({
-                title: "You submitted the following values:",
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-                    </pre>
-                ),
-            })
-            if (data?.data?.activationToken) {
-                setVerify(true)
-            }
+    const router = useRouter();
+    console.log(user);
+    // useEffect(() => {
+    //     if (isSuccess) {
+    //         toast({
+    //             title: "You submitted the following values:",
+    //             description: (
+    //                 <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+    //                     <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+    //                 </pre>
+    //             ),
+    //         })
+    //         if (data?.data?.activationToken) {
+    //             setVerify(true)
+    //         }
 
-            console.log(data);
-        } else if (error) {
-            toast({
-                title: "You submitted the following values:",
-                description: "code is error"
-            })
-        }
-    }, [isSuccess, error, data, toast])
+    //         console.log(data);
+    //     } else if (error) {
+    //         toast({
+    //             title: "You submitted the following values:",
+    //             description: "code is error"
+    //         })
+    //     }
+    // }, [isSuccess, error, data, toast])
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         const formData = new FormData()
         formData.append("name", data.name)
@@ -101,9 +101,9 @@ const Page = (props: Props) => {
         formData.append("discordUsername", data.discordUsername)
         formData.append("address", data.address)
         formData.append("avatar", data.avatar)
-        await register(formData)
+        // await register(formData)
     }
-    if (user) return router.push('/');
+    if (!user) return router.push('/');
     return (
         <>
             {verify ?
@@ -122,7 +122,6 @@ const Page = (props: Props) => {
                                 <div className="flex flex-col gap-4 lg:flex-row lg:gap-20">
                                     <div className="w-full lg:w-1/2">
                                         <FormField
-                                            control={form.control}
                                             name="name"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-0 mb-4">
@@ -131,7 +130,7 @@ const Page = (props: Props) => {
                                                         This name will be used in all communications. So provide correct name. Please do not use any pseudonyms.
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="Abdur Rahim" {...field} />
+                                                        <Input value={user?.name} readOnly disabled placeholder="Abdur Rahim"/>
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -139,7 +138,6 @@ const Page = (props: Props) => {
                                         />
 
                                         <FormField
-                                            control={form.control}
                                             name="email"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-0 mb-4">
@@ -148,7 +146,7 @@ const Page = (props: Props) => {
                                                         All communications will be made to this email address & this will be your login username. Yahoo email is not acceptable!
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input value={user?.email} readOnly disabled placeholder="Jhno@gamil.com" />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -178,7 +176,6 @@ const Page = (props: Props) => {
                                             )}
                                         />
                                         <FormField
-                                            control={form.control}
                                             name="discordUsername"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-0 mb-4">
@@ -187,7 +184,7 @@ const Page = (props: Props) => {
                                                         This username will be given access to the courses Discord support channel. If you cant find your Discord username, check out the guide here
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input required placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input value={user?.discordUsername} readOnly disabled required placeholder="Jhno@gamil.com" />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -198,12 +195,12 @@ const Page = (props: Props) => {
                                             name="discordUsername"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-0 mb-4">
-                                                    <FormLabel>Your Discord username</FormLabel>
+                                                    <FormLabel>Your current Discord username</FormLabel>
                                                     <FormDescription>
-                                                        This username will be given access to the courses Discord support channel. If you cant find your Discord username, check out the guide here
+                                                        Most of the Discord users have changed their Discord username due to the recent update of Discord. If you have changed your previous Discord username, enter the changed current username here.
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input required placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input required placeholder="current Discord username" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -225,7 +222,6 @@ const Page = (props: Props) => {
                                     </div>
                                     <div className="w-full lg:w-1/2">
                                         <FormField
-                                            control={form.control}
                                             name="phonNumber"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-0 mb-4">
@@ -234,7 +230,7 @@ const Page = (props: Props) => {
                                                         Verification will be done by sending OTP. If you use a mobile number other than a Bangladeshi mobile number, the course fee will be Tk 1,200 .
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input value={user?.phonNumber} readOnly disabled placeholder="Jhno@gamil.com" />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -256,7 +252,6 @@ const Page = (props: Props) => {
                                                 </FormItem>
                                             )}
                                         />
-
                                         <Button className="mt-9" type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>
                                     </div>
                                 </div>
