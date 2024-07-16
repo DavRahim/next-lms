@@ -9,6 +9,7 @@ import { useAddAnswerInQuestionMutation, useAddNewQuestionMutation, useAddReplyI
 import Ratings from "@/lib/Ratings";
 import { useToast } from "../ui/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { LucideMessageCircle } from "lucide-react";
 
 type Props = {
   data: any;
@@ -104,7 +105,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
   useEffect(() => {
     if (answerSuccess) {
       setAnswer("");
-      refetch()
+      refetch();
       toast({
         description: "Answer added successfully.",
       })
@@ -186,6 +187,25 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
       }
     }
   }
+  useEffect(() => {
+    if (replySuccess) {
+      setReply("");
+      courseRefetch();
+      toast({
+        description: "Review added successfully.",
+      });
+    }
+    if (replyError) {
+      if ("data" in replyError) {
+        toast({
+          variant: "destructive",
+          title: "Review added Unsuccessfully.",
+          description: "There was a problem with your request.",
+        });
+      }
+    }
+
+  }, [replyError, replySuccess, toast, courseRefetch])
 
   // console.log(user, "CourseContentMedia");
 
@@ -248,29 +268,29 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
       {
         activeBar === 2 && (
           <div className="w-full">
-            <div className="flex">
-              <Avatar className="w-[40px] h-[40px]">
-                <AvatarImage src={user.data.avatar ? user.data.avatar.url : ""} alt="@avater" />
-                <AvatarFallback>{user?.data?.name || ""}</AvatarFallback>
-              </Avatar>
-              {/* <Image
+            <div className="border-b pb-5">
+              <div className="flex">
+                <Avatar className="w-[40px] h-[40px]">
+                  <AvatarImage src={user.data.avatar ? user.data.avatar.url : ""} alt="@avater" />
+                  <AvatarFallback>{user?.data?.name || ""}</AvatarFallback>
+                </Avatar>
+                {/* <Image
                 src={user.data.avatar ? user.data.avatar.url : ""}
                 alt=""
                 width={50}
                 height={50}
                 className="w-[50px] h-[50px] rounded-full object-cover"
               /> */}
-              <textarea name="" value={question} onChange={(e) => setQuestion(e.target.value)} id="" cols={40} rows={5} placeholder="Write Your Question ..." className="outline-none bg-transparent ml-3 border border-[#dde7d889] md:w-full p-2 rounded w-[90%] md:text-[18px] font-Poppins"></textarea>
+                <textarea name="" value={question} onChange={(e) => setQuestion(e.target.value)} id="" cols={40} rows={5} placeholder="Write Your Question ..." className="outline-none bg-transparent ml-3 border border-[#dde7d889] md:w-full p-2 rounded w-[90%] md:text-[18px] font-Poppins"></textarea>
+              </div>
+              <div className="w-full flex justify-end">
+                <Button variant={"default"} className={`!w-[120px] !h-[40px] text-[18px] mt-5 ${questionCreationLoading && "cursor-no-drop"}`}
+                  onClick={questionCreationLoading ? () => { } : handleQuestion}
+                >
+                  Submit
+                </Button>
+              </div>
             </div>
-
-            <div className="w-full flex justify-end">
-              <Button variant={"default"} className={`!w-[120px] !h-[40px] text-[18px] mt-5 ${questionCreationLoading && "cursor-no-drop"}`}
-                onClick={questionCreationLoading ? () => { } : handleQuestion}
-              >
-                Submit
-              </Button>
-            </div>
-            <br />
             <br />
             <div className="w-full bg-[#ffffff3b]">
               <CommentReply
@@ -495,12 +515,12 @@ const CommentItem = ({ data, setQuestionId, item, answer, setAnswer, handleAnswe
           </div>
         </div>
         {/* media */}
-        <div className="w-full flex">
-          <span className="md:pl-16 text-black dark:text-[#ffffff83] cursor-pointer mr-2" onClick={() => { setReplayActive(!replayActive), setQuestionId(item._id) }}>
+        <div className="w-full flex items-center">
+          <h5 className="md:pl-16 text-black cursor-pointer mr-2" onClick={() => { setReplayActive(!replayActive), setQuestionId(item._id) }}>
             {!replayActive ? item?.questionReplies.length !== 0 ? "All Replies" : "Add Replay" : "Hide Replies"}
-          </span>
-          <BiMessage size={20} className="cursor-pointer text-black dark:text-white" fill="#ffffff83" />
-          <span className="pl-1 mt-[-4px] cursor-pointer text-black dark:text-white text-[#ffffff83]">
+          </h5>
+          <span className="cursor-pointer gap-1 flex w-min items-center text-lg">
+            <LucideMessageCircle size={20} className="cursor-pointer text-black " fill="#ffffff83" />
             {item.questionReplies.length}
           </span>
         </div>
@@ -509,7 +529,7 @@ const CommentItem = ({ data, setQuestionId, item, answer, setAnswer, handleAnswe
             <>
               {
                 item.questionReplies.map((item: any, index: number) => (
-                  <div key={index} className="w-full flex md:ml-16 my-5 text-black dark:text-white">
+                  <div key={index} className="w-full flex md:ml-16 my-3 text-black dark:text-white">
                     <Avatar className="w-[40px] h-[40px]">
                       <AvatarImage src={item?.user.avatar ? item?.user.avatar.url : ""} alt="@avater" />
                       <AvatarFallback>{item?.user?.name || ""}</AvatarFallback>
