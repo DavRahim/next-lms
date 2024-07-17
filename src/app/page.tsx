@@ -1,24 +1,16 @@
 import { Icons } from "@/components/Icons";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { AlignJustify, ArrowDown, Check, Star, StarIcon } from "lucide-react";
+import { ArrowDown, Check, Star } from "lucide-react";
 import Image from "next/image";
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-
-// import required modules
-import { EffectCards } from 'swiper/modules';
 import Profile from "@/components/Profile";
-import Link from "next/link";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import PublicCourses from "@/components/course/PublicCourses";
 
 export default function Home() {
   return (
     <div className="background-gradient grainy-light">
       <section>
+        {/* Hero area */}
         <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-4 xl:pt-12 lg:pb-52">
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
             <div className='relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start'>
@@ -95,7 +87,7 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
 
-      {/* new section */}
+      {/* customers section */}
       <section className='bg-slate-100 grainy-dark py-24'>
         <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-32'>
           <div className='flex flex-col lg:flex-row items-center gap-4 sm:gap-6'>
@@ -240,7 +232,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
+      {/* Step section */}
       <section>
         <MaxWidthWrapper className='py-24'>
           <div className='mb-12 px-6 lg:px-8'>
@@ -469,7 +461,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
+      {/* Lead Instructor */}
       <section className='bg-slate-100 grainy-dark py-24'>
         <MaxWidthWrapper className='py-24'>
           <div className='mb-12 px-6 lg:px-8'>
@@ -510,7 +502,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
+      {/* Opportunity course card */}
       <section>
         <MaxWidthWrapper className='py-24'>
           <div className='mb-12 px-6 lg:px-8'>
@@ -524,110 +516,8 @@ export default function Home() {
               </h2>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] mb-[80px] border-0">
-            <Link href={'/'}>
-              <div className="w-full min-h-[35vh] bg-[#fff] backdrop-blur border dark:shadow-[bg-slate-700] rounded-lg p-3 shadow-sm dark:shadow-inner mb-[80px] border-green-200">
-                <Image
-                  src={'/course.jpg'}
-                  className="rounded w-full"
-                  alt="course"
-                  width={500}
-                  height={300}
-                />
-                <br />
-                <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
-                <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                  </div>
-                  <h5 className="text-gray-900 undefined"> 500  Students</h5>
-                </div>
-                <div className="w-full flex items-center justify-between pt-3">
-                  <div className="flex">
-                    <h3 className="text-gray-900">5000৳</h3>
-                    <h5 className="pl-3 text-[14px] mt-[-5px] line-through opacity-80 text-gray-900">6000৳</h5>
-                  </div>
-                  <div className="flex items-center pb-3">
-                    <AlignJustify className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <h5 className="pl-2 text-gray-900">144 Lectures</h5>
-                  </div>
-                </div>
-
-              </div>
-            </Link>
-            <Link href={'/'}>
-              <div className="w-full min-h-[35vh] bg-[#fff] backdrop-blur border dark:shadow-[bg-slate-700] rounded-lg p-3 shadow-sm dark:shadow-inner mb-[80px] border-green-200">
-                <Image
-                  src={'/course.jpg'}
-                  className="rounded w-full"
-                  alt="course"
-                  width={500}
-                  height={300}
-                />
-                <br />
-                <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
-                <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                  </div>
-                  <h5 className="text-gray-900 undefined"> 500  Students</h5>
-                </div>
-                <div className="w-full flex items-center justify-between pt-3">
-                  <div className="flex">
-                    <h3 className="text-gray-900">5000৳</h3>
-                    <h5 className="pl-3 text-[14px] mt-[-5px] line-through opacity-80 text-gray-900">6000৳</h5>
-                  </div>
-                  <div className="flex items-center pb-3">
-                    <AlignJustify className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <h5 className="pl-2 text-gray-900">144 Lectures</h5>
-                  </div>
-                </div>
-
-              </div>
-            </Link>
-            <Link href={'/'}>
-              <div className="w-full min-h-[35vh] bg-[#fff] backdrop-blur border dark:shadow-[bg-slate-700] rounded-lg p-3 shadow-sm dark:shadow-inner mb-[80px] border-green-200">
-                <Image
-                  src={'/course.jpg'}
-                  className="rounded w-full"
-                  alt="course"
-                  width={500}
-                  height={300}
-                />
-                <br />
-                <h1 className="font-Poppins text-[16px] text-gray-900">Journey Of Frontend Web Development</h1>
-                <div className="w-full flex items-center justify-between pt-2">
-                  <div className="flex mt-1 ml-2 md:mt-0 md:ml-0">
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <Star className='h-4 w-4 stroke-[3px] text-green-600' />
-                  </div>
-                  <h5 className="text-gray-900 undefined"> 500  Students</h5>
-                </div>
-                <div className="w-full flex items-center justify-between pt-3">
-                  <div className="flex">
-                    <h3 className="text-gray-900">5000৳</h3>
-                    <h5 className="pl-3 text-[14px] mt-[-5px] line-through opacity-80 text-gray-900">6000৳</h5>
-                  </div>
-                  <div className="flex items-center pb-3">
-                    <AlignJustify className='h-4 w-4 stroke-[3px] text-green-600' />
-                    <h5 className="pl-2 text-gray-900">144 Lectures</h5>
-                  </div>
-                </div>
-
-              </div>
-            </Link>
-          </div>
+          {/* PublicCourses card */}
+          <PublicCourses />
         </MaxWidthWrapper>
       </section>
 
