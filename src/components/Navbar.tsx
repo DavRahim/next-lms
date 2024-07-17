@@ -6,7 +6,7 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Moon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useLogoutUserMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
@@ -17,14 +17,12 @@ type Props = {};
 const Navbar = (props: Props) => {
   const { user } = useSelector((state: any) => state.auth)
   const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
-  const [logoutUser, { data: logoutData, isSuccess }] = useLogoutUserMutation();
+  const [logoutUser, { isSuccess }] = useLogoutUserMutation();
   const { toast } = useToast()
-
   const logOut = async () => {
     await logoutUser({});
   }
   useEffect(() => {
-
     if (isSuccess) {
       toast({
         description: "Logout successfully",
@@ -43,7 +41,8 @@ const Navbar = (props: Props) => {
               href='/courses'
               className={buttonVariants({
                 size: 'sm',
-                variant: 'ghost',
+                variant: "ghost",
+                className: "hidden sm:flex items-center gap-1"
               })}>
               Courses
             </Link>
@@ -51,7 +50,8 @@ const Navbar = (props: Props) => {
               href='/policy'
               className={buttonVariants({
                 size: 'sm',
-                variant: 'ghost',
+                variant: "ghost",
+                className: "hidden sm:flex items-center gap-1"
               })}>
               Privacy Policy
             </Link>
@@ -59,18 +59,19 @@ const Navbar = (props: Props) => {
               href='/about'
               className={buttonVariants({
                 size: 'sm',
-                variant: 'ghost',
+                variant: "ghost",
+                className: "hidden sm:flex items-center gap-1"
               })}>
               About Us
             </Link>
-            <Link
-              href='/login'
+            <div
               className={buttonVariants({
                 size: 'sm',
-                variant: 'ghost',
+                variant: "ghost",
+                className: "flex items-center gap-1"
               })}>
-              Login
-            </Link>
+              <Moon className='h-5 w-5' />
+            </div>
             <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
             {
               isLoading ? ("") : (user ? (
@@ -90,30 +91,15 @@ const Navbar = (props: Props) => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (<Link
-                href='/'
+                href='/login'
                 className={buttonVariants({
                   size: 'sm',
-                  className: 'hidden sm:flex items-center gap-1',
+                  className: 'flex items-center gap-1',
                 })}>
-                Enroll Now
+                Login
                 <ArrowRight className='ml-1.5 h-5 w-5' />
               </Link>))
             }
-
-            {/* <Link
-              href='/'
-              className={buttonVariants({
-                size: 'sm',
-                className: 'hidden sm:flex items-center gap-1',
-              })}>
-              Enroll Now
-              <ArrowRight className='ml-1.5 h-5 w-5' />
-            </Link> */}
-
-            {/* <Avatar className="border-[2px] border-green-500 shadow-2xl">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar> */}
           </div>
         </div>
       </MaxWidthWrapper>

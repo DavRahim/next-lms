@@ -91,11 +91,19 @@ export const authApi = apiSlice.injectEndpoints({
                     console.log(error)
                 }
             }
+        }),
+        userUpdate: builder.mutation({
+            query: ({ discordUsername, address }) => ({
+                url: "/users/update-user",
+                method: "PATCH",
+                body: { discordUsername, address },
+                credentials: "include" as const
+            })
         })
     })
 })
 
 
-export const { useRegistrationMutation, useActivationMutation, useLoginMutation, useLogoutUserMutation } = authApi
+export const { useRegistrationMutation, useActivationMutation, useLoginMutation, useLogoutUserMutation, useUserUpdateMutation } = authApi
 
 
