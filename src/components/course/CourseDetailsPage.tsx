@@ -38,16 +38,15 @@ const CourseDetailsPage = ({ id }: Props) => {
 
     return (
         <>
-            {isLoading ? (
-                // TODO: Loading components
-                <h1>Loading ...</h1>
-            ) : (
-                stripePromise && (
-                    <CourseDetails courseDetailsData={courseDetailsData} stripePromise={stripePromise} clientSecret={clientSecret} />
-                )
-
-            )}
-
+            {
+                isLoading ? (
+                    // TODO: Loading components
+                    <h1>Loading ...</h1>
+                ) : (
+                    stripePromise && (
+                        <CourseDetails courseDetailsData={courseDetailsData} stripePromise={stripePromise} clientSecret={clientSecret} />
+                    )
+                )}
         </>);
 };
 

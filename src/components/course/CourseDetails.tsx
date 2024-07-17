@@ -10,6 +10,8 @@ import { buttonVariants } from "../ui/button";
 import { useSelector } from "react-redux";
 import { Elements } from "@stripe/react-stripe-js"
 import CheckOutForm from "../payment/CheckOutForm";
+import { format } from "timeago.js";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 
 type Props = {
@@ -256,7 +258,6 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                     <div className="w-full">
                         <h1 className="text-[25px] font-Poppins font-[600] text-black">
                             Course Details
-
                         </h1>
                         <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden text-black">{courseDetailsData?.description}</p>
                     </div>
@@ -274,56 +275,71 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                     </div>
                     <br />
                     {/* reviews */}
-                    <div className="w-full pb-4">
-                        <div className="w-full flex">
-                            <div className="w-full flex">
-                                <div className="w-[50px] h-[50px]">
-                                    <Image
-                                        src={"https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
-                                        alt=""
-                                        width={50}
-                                        height={50}
-                                        className="w-[50px] h-[50px] rounded-full object-cover"
-                                    />
-                                </div>
-                                <div className="mt-2 ml-3">
-                                    <h1 className="text-[18px]">Abdur Rahim</h1>
-                                    <Ratings rating={5} />
-                                    <p>
-                                        it is an amazing course
-                                    </p>
-                                    <small className="text-[#ffffff83]">
-                                        11/ 12/2020
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        {/* commentReplies */}
-                        <div className="w-full flex md:ml-16 my-5">
-                            <div className="w-[50px] h-[50px]">
-                                <Image
-                                    src={"https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
-                                    alt=""
-                                    width={50}
-                                    height={50}
-                                    className="w-[50px] h-[50px] rounded-full object-cover"
-                                />
-
-                            </div>
-                            <div className="pl-2">
-                                <h5 className="text-[20px]">
-                                    <div className="flex items-center">
-                                        Abdur Rahim {<VscVerifiedFilled className="text-blue-700 ml-2" size={20} />}
+                    {
+                        (courseDetailsData.reviews && [...courseDetailsData.reviews].reverse())?.map((review: any, index: number) => (
+                            <div className="w-full pb-4" key={index}>
+                                <div className="w-full flex" >
+                                    <div className="w-full flex">
+                                        <Avatar className="w-[40px] h-[40px]">
+                                            <AvatarImage src={review.user.avatar ? review?.user?.avatar?.url : ""} alt="@avater" />
+                                            <AvatarFallback>{review?.user?.name || ""}</AvatarFallback>
+                                        </Avatar>
+                                        {/* <div className="w-[50px] h-[50px]">
+                                            <Image
+                                                src={review?.user.avatar ? review?.user?.avatar?.url : "https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
+                                                alt=""
+                                                width={50}
+                                                height={50}
+                                                className="w-[50px] h-[50px] rounded-full object-cover"
+                                            />
+                                        </div> */}
+                                        <div className="mt-2 ml-3">
+                                            <h1 className="text-[18px]">{review?.user?.name}</h1>
+                                            <Ratings rating={review?.rating} />
+                                            <p>
+                                                {review.comment}
+                                            </p>
+                                            <small className="text-[#0a090983]">
+                                                {format(review.createdAt)} *
+                                            </small>
+                                        </div>
                                     </div>
-                                </h5>
-                                <p>Thank you</p>
-                                <small className="text-[#ffffff83]">
-                                    11/ 12/2020
-                                </small>
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                {/* commentReplies */}
+                                {
+                                    review.commentReplies?.map((comReply: any, index: number) => (
+                                        <div className="w-full flex md:ml-16 my-5" key={index}>
+                                            <Avatar className="w-[40px] h-[40px]">
+                                                <AvatarImage src={comReply.user.avatar ? comReply?.user?.avatar?.url : ""} alt="@avater" />
+                                                <AvatarFallback>{comReply?.user?.name || ""}</AvatarFallback>
+                                            </Avatar>
 
+                                            {/* //<div className="w-[50px] h-[50px]">
+                                            // <Image
+                                            // src={comReply.user.avatar ? comReply?.user?.avatar?.url : "https://imgs.search.brave.com/H-EWHnZrTM7Fp44-1C5jP5MFwCHtU_SEulqH5WtPHDE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzQxLzQ4LzU1/LzM2MF9GXzU0MTQ4/NTUwMF9XNkdOZHdi/R1lsMGVnSndHS0gx/VlJPclFnbDBQR0M0/VS5qcGc"}
+                                            //         alt=""
+                                            //         width={50}
+                                            //         height={50}
+                                            //         className="w-[50px] h-[50px] rounded-full object-cover"
+                                            //     />
+                                            // </div> */}
+                                            <div className="pl-2">
+                                                <h5 className="text-[20px]">
+                                                    <div className="flex items-center">
+                                                        {comReply?.user?.name} {comReply.user.role === "admin" && <VscVerifiedFilled className="text-blue-700 ml-2" size={20} />}
+                                                    </div>
+                                                </h5>
+                                                <p>{comReply.comment}</p>
+                                                <small className="text-[#0e0e0ed8]">
+                                                    {format(comReply.createdAt)}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="w-full md:w-[35%] relative">
                     <div className="sticky top-[100px] left-0 z-50 w-full">

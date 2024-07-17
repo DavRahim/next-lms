@@ -99,11 +99,22 @@ export const authApi = apiSlice.injectEndpoints({
                 body: { discordUsername, address },
                 credentials: "include" as const
             })
+        }),
+        changePassword: builder.mutation({
+            query: ({ oldPassword, newPassword }) => ({
+                url: "/users/change-password",
+                method: "POST",
+                body: {
+                    oldPassword,
+                    newPassword
+                },
+                credentials: "include" as const
+            }),
         })
     })
 })
 
 
-export const { useRegistrationMutation, useActivationMutation, useLoginMutation, useLogoutUserMutation, useUserUpdateMutation } = authApi
+export const { useRegistrationMutation, useActivationMutation, useLoginMutation, useLogoutUserMutation, useUserUpdateMutation, useChangePasswordMutation } = authApi
 
 
