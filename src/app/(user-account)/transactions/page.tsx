@@ -7,18 +7,18 @@ import React from "react";
 type Props = {};
 
 const Page = (props: Props) => {
-    const invoices = [
-        {
-            _id: "001",
-            course: "Think in a redux way",
-            date: "22 Jul 2023 08:08:59 PM	",
-            paymentMethod: "SSLCOMMERZ",
-            amount: "1,100 Rs",
-            invoiceNo: "LWSCTXN-911778F2",
-            paymentStatus: "Done",
-            option: "N/A"
-        }
-    ]
+    // const invoices = [
+    //     {
+    //         _id: "001",
+    //         course: "Think in a redux way",
+    //         date: "22 Jul 2023 08:08:59 PM	",
+    //         paymentMethod: "SSLCOMMERZ",
+    //         amount: "1,100 Rs",
+    //         invoiceNo: "LWSCTXN-911778F2",
+    //         paymentStatus: "Done",
+    //         option: "N/A"
+    //     }
+    // ]
     const { data: ordersData, isLoading, error } = useGetUserOrdersQuery({});
     return (
         <>

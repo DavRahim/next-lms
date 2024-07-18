@@ -1,10 +1,9 @@
+
+import React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { BadgeDollarSign, BookOpenCheck, LockKeyhole, UserRoundSearch } from "lucide-react";
 import Link from "next/link";
-import React from "react";
-
 
 const UserRootLayout = ({
     children,
@@ -35,7 +34,7 @@ const UserRootLayout = ({
                     </Link>
                     <Link href='/enrolment' className="flex items-center py-1 px-[4px] rounded-md hover:bg-[#F4F4F5]">
                         <BookOpenCheck className='h-4 w-4 stroke-[3px] text-green-600 mr-5' />
-                        <span>Enrolment</span>
+                        Enrolment
                     </Link>
                 </div>
                 <Separator className="ml-5" orientation="vertical" />

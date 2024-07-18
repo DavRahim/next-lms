@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { IoCheckmarkDoneOutline, IoCloseOutline } from "react-icons/io5";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import CourseContentList from "./CourseContentList";
-import Image from "next/image";
 import Link from "next/link";
 import CoursePlayer from "./CoursePlayer";
 import { buttonVariants } from "../ui/button";
@@ -12,7 +11,7 @@ import { Elements } from "@stripe/react-stripe-js"
 import CheckOutForm from "../payment/CheckOutForm";
 import { format } from "timeago.js";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-
+import { useRouter } from 'next/navigation'
 
 type Props = {
     courseDetailsData: any;
@@ -142,10 +141,12 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
     const discountPercentage = ((courseDetailsData?.estimatePrice - courseDetailsData?.price) / courseDetailsData?.estimatePrice) * 100;
 
     const discountPercentagePrice = discountPercentage.toFixed(0);
-
+    const router = useRouter();
     const handleOrder = (e: any) => {
         if (user) {
             setOpen(true)
+        } else {
+            router.push('/enroll/instructions')
         }
     }
     return (
