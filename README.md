@@ -35,22 +35,29 @@ Add a file structure here with the basic details about files, below is an exampl
 
 ```
 .
-├── assets
-│   ├── css
-│   │   ├── index-ui.css
-│   │   └── rate-ui.css
-│   ├── images
-│   │   ├── icons
-│   │   │   ├── shrink-button.png
-│   │   │   └── umbrella.png
-│   │   ├── logo_144.png
-│   │   └── Untitled-1.psd
-│   └── javascript
-│       ├── index.js
-│       └── rate.js
-├── CNAME
-├── index.html
-├── rate.html
+├── public
+|---src
+│   ├── app
+│   │   ├── about
+│   │   |── courses
+|   |   |-- course-access
+|   |   |-- Etc...
+|   |   
+│   ├── components
+|   |    |-course
+|   |    |-payment
+|   |    |-ui
+|   |--lib
+|   |--redux 
+│       ├── features
+│       │   ├── api
+│       │   └── auth
+|       |   |-- course
+│       ├── store.ts
+│            
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
 └── README.md
 ```
 
