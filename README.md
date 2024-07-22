@@ -6,14 +6,14 @@ Built with the Next.js 14 App Router, Postgres, TypeScript, Tailwind & Kinde Aut
 Pictures of you![flower_shop](https://github.com/DavRahim/next-lms)
 
 ## Features
-- 🛠️ Complete shop built from scratch in Next.js 14
+- 🛠️ Complete Rs-LMS built from scratch in Next.js 14
 - 💻 Beautiful landing page included
 - 🎨 Custom artworks made by a professional illustrator
 - 💳 Secret admin dashboard to manage orders
 - 🖥️ Drag-and-drop file uploads
-- 🛍️ Customers can purchase directly from you
+- 🛍️ student can purchase course directly from you
 - 🌟 Clean, modern UI on top of shadcn-ui
-- 🛒 Completely custom phone case configurator
+- 🛒 Completely custom configuration
 - 🔑 Authentication using Auth js
 - ✉️ Beautiful thank-you email after purchase
 - ✅ Apple-inspired configuration design
