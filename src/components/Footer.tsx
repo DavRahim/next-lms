@@ -2,7 +2,6 @@ import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
 
 const Footer = () => {
-  console.log("data");
   return (
     <footer className='bg-white h-20 relative'>
       <MaxWidthWrapper>
