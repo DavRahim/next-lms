@@ -10,7 +10,6 @@ type Props = {
 };
 
 const CourseCard: FC<Props> = ({ course, isProfile }) => {
-    // console.log(isProfile, "isProfile");
     return (
         <>
             <Link href={!isProfile ? `/course/${course._id}` : `course-access/${course._id}`} className="w-full bg-[#fff] backdrop-blur border dark:shadow-[bg-slate-700] rounded-lg p-3 shadow-sm dark:shadow-inner mb-[80px] border-green-200">
