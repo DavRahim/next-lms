@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRegistrationMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
 import Verification from "@/components/Verification";
@@ -66,25 +66,19 @@ const Page = (props: Props) => {
         },
     });
     const { toast } = useToast()
-    const [register, { data, error, isSuccess }] = useRegistrationMutation();
-    const { user } = useSelector((state: any) => state.auth)
-    const [verify, setVerify] = useState(false)
-    const router = useRouter()
+    const [register, { data, error, isSuccess, isLoading }] = useRegistrationMutation();
+    const { user } = useSelector((state: any) => state.auth);
+    const [verify, setVerify] = useState(false);
+    const router = useRouter();
     useEffect(() => {
         if (isSuccess) {
             toast({
-                title: "You submitted the following values:",
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-                    </pre>
-                ),
-            })
+                title: "Your Information submitted Successfully!",
+                description: "Plz Check Your Email & Submit Your 4 Digit Code",
+            });
             if (data?.data?.activationToken) {
                 setVerify(true)
             }
-
-            console.log(data);
         } else if (error) {
             toast({
                 title: "You submitted the following values:",
@@ -93,6 +87,12 @@ const Page = (props: Props) => {
         }
     }, [isSuccess, error, data, toast])
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        if (data.password !== data.confirmPassword) {
+            return toast({
+                title: "Your Password Not Same!",
+                description: "Password & Confirm Password Same Value Plz!"
+            })
+        }
         const formData = new FormData()
         formData.append("name", data.name)
         formData.append("gender", data.gender)
@@ -104,12 +104,15 @@ const Page = (props: Props) => {
         formData.append("avatar", data.avatar)
         await register(formData)
     }
+    const [passwordShow, setPasswordShow] = useState("password");
+    const [passwordShow1, setPasswordShow1] = useState("password");
+
     if (user) return router.push('/');
     return (
         <>
             {verify ?
                 <>
-                    <Verification />
+                    <Verification successData={data}/>
                 </> :
                 <>
                     <div className="py-10">
@@ -188,7 +191,7 @@ const Page = (props: Props) => {
                                                         All communications will be made to this email address & this will be your login username. Yahoo email is not acceptable!
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input type="email" placeholder="Jhno@gamil.com" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -204,7 +207,10 @@ const Page = (props: Props) => {
                                                         Password must be at least 8 characters long and contain at least 1 letter and 1 number.
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="anyPassword1971" {...field} />
+                                                        <div className="relative">
+                                                            <Input type={passwordShow} placeholder="anyPassword1971" {...field} />
+                                                            {passwordShow === "text" ? <EyeOff onClick={() => setPasswordShow("password")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" /> : <Eye onClick={() => setPasswordShow("text")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" />}
+                                                        </div>
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -220,7 +226,10 @@ const Page = (props: Props) => {
                                                         This password must match the password above
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="anyPassword1971" {...field} />
+                                                        <div className="relative">
+                                                            <Input type={passwordShow1} placeholder="anyPassword1971" {...field} />
+                                                            {passwordShow1 === "text" ? <EyeOff onClick={() => setPasswordShow1("password")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" /> : <Eye onClick={() => setPasswordShow1("text")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" />}
+                                                        </div>
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -274,7 +283,7 @@ const Page = (props: Props) => {
                                                         Verification will be done by sending OTP. If you use a mobile number other than a Bangladeshi mobile number, the course fee will be Tk 1,200 .
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input placeholder="+8801234567890" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -290,7 +299,7 @@ const Page = (props: Props) => {
                                                         This username will be given access to the courses Discord support channel. If you cant find your Discord username, check out the guide here
                                                     </FormDescription>
                                                     <FormControl>
-                                                        <Input required placeholder="Jhno@gamil.com" {...field} />
+                                                        <Input required placeholder="javascript123" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -321,18 +330,21 @@ const Page = (props: Props) => {
                                                 I accept all terms , privacy policy and refund policy of Learn with RS Learning platform .
                                             </label>
                                         </div>
-                                        <Button type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>
+                                        {
+                                            isLoading ? <Button disabled>
+                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                Please wait
+                                            </Button> : <Button type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>
+                                        }
                                     </div>
                                 </div>
                             </form>
                         </Form>
                     </div>
                 </>}
-
-
         </>
     );
-    
+
 };
 
 export default Page;

@@ -18,9 +18,11 @@ const FormSchema = z.object({
         message: "Your one-time password must be 6 characters.",
     }),
 })
+type Props = {
+    successData: any
+};
 
-
-const Verification = () => {
+const Verification = ({ successData }: Props) => {
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -38,7 +40,7 @@ const Verification = () => {
                 title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                         use is successfully register 
+                        use is successfully register
                     </pre>
                 ),
             })
@@ -48,13 +50,13 @@ const Verification = () => {
                 title: "You submitted the following values:",
                 description: "code is error"
             })
+            console.log(error);
         }
-        console.log(error);
-    }, [isSuccess, error,])
+    }, [isSuccess, error])
 
-    const  onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         await activation({
-            activation_token: token ,
+            activation_token: token,
             activation_code: data.pin,
         })
     }
@@ -65,7 +67,7 @@ const Verification = () => {
                     <h1 className="text-center text-gray-900 text-4xl font-semibold">
                         <span className="text-green-600">Email Verification</span> RsLms
                     </h1>
-                    <p className="subtitle mx-auto w-full text-center">Please check your email: mdabdurrahi184275@gmail.com to activate your account</p>
+                    <p className="subtitle mx-auto w-full text-center">{successData?.message}</p>
                 </div>
             </div>
             <Form {...form}>

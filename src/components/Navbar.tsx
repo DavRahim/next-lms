@@ -28,7 +28,15 @@ const Navbar = (props: Props) => {
         description: "Logout successfully",
       })
     }
-  }, [isSuccess, toast])
+  }, [isSuccess, toast]);
+
+  // TODO: Dark work
+
+  const handleDarkMode = () => {
+    toast({
+      description: "Dark Mode Is Coming Soon!",
+    })
+  }
   return (
     <nav className='sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all'>
       <MaxWidthWrapper>
@@ -69,7 +77,8 @@ const Navbar = (props: Props) => {
                 size: 'sm',
                 variant: "ghost",
                 className: "flex items-center gap-1"
-              })}>
+              })}
+              onClick={handleDarkMode}>
               <Moon className='h-5 w-5' />
             </div>
             <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
