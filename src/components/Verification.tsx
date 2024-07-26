@@ -60,7 +60,6 @@ const Verification = ({ successData }: Props) => {
             activation_code: data.pin,
         })
     }
-    console.log(token)
     return (
         <div className="py-10">
             <div className="w-full space-y-8 mb-8">
