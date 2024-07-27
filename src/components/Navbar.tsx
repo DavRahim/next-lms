@@ -27,8 +27,9 @@ const Navbar = (props: Props) => {
       toast({
         description: "Logout successfully",
       })
+      refetch()
     }
-  }, [isSuccess, toast]);
+  }, [isSuccess, toast, refetch]);
 
   // TODO: Dark work
 

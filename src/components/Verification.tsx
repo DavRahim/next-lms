@@ -10,6 +10,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 
 
@@ -30,29 +31,28 @@ const Verification = ({ successData }: Props) => {
             pin: "",
         },
     })
-
     const { token } = useSelector((state: any) => state.auth);
     const [activation, { isSuccess, error }] = useActivationMutation()
+    const router = useRouter();
 
     useEffect(() => {
         if (isSuccess) {
             toast({
-                title: "You submitted the following values:",
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        use is successfully register
-                    </pre>
-                ),
+                title: "User Register successfully..!",
+                description: "You Are A Member Rs Lms Plz Login Here..!"
             })
+            return router.push('/login')
         }
         if (error) {
-            toast({
-                title: "You submitted the following values:",
-                description: "code is error"
-            })
-            console.log(error);
+            if ("data" in error) {
+                toast({
+                    variant: "destructive",
+                    title: "Your Code is Wrong",
+                    description: "Plz Check Your Email And Enter Valid Code"
+                })
+            }
         }
-    }, [isSuccess, error])
+    }, [isSuccess, error, router])
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         await activation({

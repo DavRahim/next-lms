@@ -56,11 +56,10 @@ const CheckOutForm = ({ data, user }: Props) => {
         }
         if (error) {
             if ("data" in error) {
-                const errorMessage = error as any;
                 toast({
                     variant: "destructive",
-                    title: "Uh oh! Something went wrong.",
-                    description: "There was a problem with your request.",
+                    title: "Your Payment is Wrong.",
+                    description: "Plz Enter Your Valid Card Number And CVC.!",
 
                 })
             }

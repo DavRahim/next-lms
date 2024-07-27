@@ -151,15 +151,15 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
     }
     return (
         <>
-            <div className="w-full flex flex-col-reverse md:flex-row">
+            <div className="w-full md:pt-8 flex flex-col-reverse md:flex-row">
                 <div className="w-full md:w-[65%] md:pr-5">
-                    <h1 className="text-[25px] font-[500] text-black">
+                    <h1 className="text-[35px] font-[500] text-black">
                         {courseDetailsData?.name}
                     </h1>
                     <div className="flex items-center justify-between pt-3">
                         <div className="flex items-center justify-center">
                             <Ratings rating={4} />
-                            <h5 className="text-black"> {courseDetailsData?.review?.length} Review</h5>
+                            <h5 className="text-black"> {"("} {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} Ratings / 5 {")"}</h5>
                         </div>
                         <h5 className="text-black">
                             {courseDetailsData?.purchased} Students
@@ -269,7 +269,7 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                             <Ratings rating={courseDetailsData?.rating} />
                             <div className="mb-2 md:mb-[unset]">
                                 <h5 className="text-[25px] font-Poppins text-black">
-                                    {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} {' '} Course Rating {courseDetailsData?.reviews?.length} Reviews
+                                    {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} {' '} Course Rating . {courseDetailsData?.reviews?.length} Reviews
                                 </h5>
                             </div>
                         </div>
@@ -342,7 +342,7 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                         ))
                     }
                 </div>
-                <div className="w-full md:w-[35%] relative">
+                <div className="w-full pt-8 md:w-[35%] relative">
                     <div className="sticky top-[100px] left-0 z-50 w-full">
                         <CoursePlayer
                             title={"title"}

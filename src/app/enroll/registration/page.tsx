@@ -103,6 +103,7 @@ const Page = (props: Props) => {
         formData.append("address", data.address)
         formData.append("avatar", data.avatar)
         await register(formData)
+        console.log(formData)
     }
     const [passwordShow, setPasswordShow] = useState("password");
     const [passwordShow1, setPasswordShow1] = useState("password");
@@ -112,7 +113,7 @@ const Page = (props: Props) => {
         <>
             {verify ?
                 <>
-                    <Verification successData={data}/>
+                    <Verification successData={data} />
                 </> :
                 <>
                     <div className="py-10">
