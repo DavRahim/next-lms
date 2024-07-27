@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -14,6 +14,7 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { ToastAction } from "@/components/ui/toast";
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
+import { Eye, EyeOff } from "lucide-react";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -59,6 +60,7 @@ const Page = () => {
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         await login({ email: data.email, password: data.password })
     }
+    const [passwordShow, setPasswordShow] = useState("password");
     if (user) return router.push('/');
     return (
         <MaxWidthWrapper>
@@ -98,7 +100,11 @@ const Page = () => {
                                             Password must be at least 8 characters long and contain at least 1 letter and 1 number.
                                         </FormDescription>
                                         <FormControl>
-                                            <Input placeholder="anyPassword1971" {...field} />
+                                            <div className="relative">
+                                                <Input type={passwordShow} placeholder="anyPassword1971" {...field} />
+                                                {passwordShow === "text" ? <EyeOff onClick={() => setPasswordShow("password")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" /> : <Eye onClick={() => setPasswordShow("text")} className="w-5 h-5 absolute top-1/2 right-2 -translate-y-1/2" />}
+                                            </div>
+                                            {/* <Input type="password" placeholder="anyPassword1971" {...field} /> */}
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

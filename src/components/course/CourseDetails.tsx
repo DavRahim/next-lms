@@ -345,8 +345,8 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                 <div className="w-full pt-8 md:w-[35%] relative">
                     <div className="sticky top-[100px] left-0 z-50 w-full">
                         <CoursePlayer
-                            title={"title"}
-                            videoUrl={"title"}
+                            title={courseDetailsData?.title}
+                            videoUrl={courseDetailsData?.demoUrl}
                         />
                         <div className="flex items-center">
                             <h1 className="pt-5 text-[25px] text-black">

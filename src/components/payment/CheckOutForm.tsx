@@ -6,7 +6,8 @@ import { LinkAuthenticationElement, PaymentElement, useElements, useStripe } fro
 import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
-import { buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 
 type Props = {
@@ -70,20 +71,34 @@ const CheckOutForm = ({ data, user }: Props) => {
         <form id="payment-form" onSubmit={handleSubmit}>
             <LinkAuthenticationElement id="link-authentication-element" />
             <PaymentElement id="payment-element" />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                <span id="button-text" className={buttonVariants({ variant: "default" })}>
+            {
+                isLoading ? <Button disabled>
+                    <Loader2 className="mr-2 h-4 mt-2 w-4 animate-spin" />
+                    Please wait
+                </Button> : <Button disabled={isLoading || !stripe || !elements} type="submit">Submit information <ArrowRight className="h-4 w-6 mt-2 text-white fill-white" /> </Button>
+            }
+            {
+                message && (
+                    <div
+                        id="payment-message" className="text-red-600 font-Poppins pt-2">
+                        {message}
+                    </div>
+                )
+            }
+            {/* <button disabled={isLoading || !stripe || !elements} id="submit"> */}
+            {/* <span id="button-text" className={buttonVariants({ variant: "default" })}>
                     {isLoading ? "Paying..." : "Pay Now"}
-                </span>
-                {/* Show any error or success message */}
-                {
+                </span> */}
+            {/* Show any error or success message */}
+            {/* {
                     message && (
                         <div
                             id="payment-message" className="text-red-600 font-Poppins pt-2">
                             {message}
                         </div>
                     )
-                }
-            </button>
+                } */}
+            {/* </button> */}
 
 
         </form>
