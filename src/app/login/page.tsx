@@ -48,12 +48,14 @@ const Page = () => {
             })
             router.push('/');
         } else if (error) {
-            toast({
-                variant: "destructive",
-                title: "Uh oh! Something went wrong.",
-                description: "There was a problem with your request.",
-                action: <ToastAction altText="Try again">Try again</ToastAction>,
-            })
+            if ("data" in error) {
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: "There was a problem with your request.",
+                    action: <ToastAction altText="Try again">Try again</ToastAction>,
+                })
+            }
         }
     }, [isSuccess, error, loginData, toast, router])
 

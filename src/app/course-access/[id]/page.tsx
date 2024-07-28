@@ -1,4 +1,5 @@
 "use client"
+
 import CourseContent from "@/components/course/CourseContent";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
@@ -15,6 +16,7 @@ const Page = ({ params }: Props) => {
     const { data: userData, isLoading, error, refetch } = useLoadUserQuery(undefined, {});
     // console.log(userData);
     useEffect(() => {
+        refetch();
         if (userData) {
             const isPurchased = userData?.data?.courses?.find((item: any) => item._id === id)
             if (!isPurchased) {
@@ -24,7 +26,7 @@ const Page = ({ params }: Props) => {
                 redirect("/")
             }
         }
-    }, [userData, error, id]);
+    }, [userData, error, id, refetch]);
 
 
     return (

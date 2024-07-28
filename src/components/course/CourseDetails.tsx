@@ -142,7 +142,9 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
 
     const discountPercentagePrice = discountPercentage.toFixed(0);
     const router = useRouter();
-    const handleOrder = (e: any) => {
+   
+
+    const handleOrder = async(e: any) => {
         if (user) {
             setOpen(true)
         } else {

@@ -47,7 +47,7 @@ const CheckOutForm = ({ data, user }: Props) => {
 
     useEffect(() => {
         if (orderData) {
-            refetch()
+            refetch();
             redirect(`/course-access/${data._id}`)
             // socketId.emit("notification", {
             //     title: "New Order",
