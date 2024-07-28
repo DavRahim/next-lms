@@ -3,14 +3,15 @@
 import React, { useEffect } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import { ArrowRight, Moon } from "lucide-react";
+import { ArrowRight, Moon, Sun } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useLogoutUserMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
 import { useToast } from "./ui/use-toast";
+import { useTheme } from "next-themes";
 
 type Props = {};
 
@@ -33,6 +34,7 @@ const Navbar = (props: Props) => {
 
   // TODO: Dark work
 
+  const { setTheme } = useTheme()
   const handleDarkMode = () => {
     toast({
       description: "Dark Mode Is Coming Soon!",
@@ -73,14 +75,27 @@ const Navbar = (props: Props) => {
               })}>
               About Us
             </Link>
-            <div
-              className={buttonVariants({
-                size: 'sm',
-                variant: "ghost",
-                className: "flex items-center gap-1"
-              })}
-              onClick={handleDarkMode}>
-              <Moon className='h-5 w-5' />
+            <div className="flex items-center gap-1">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    Dark
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                    System
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
             {

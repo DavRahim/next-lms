@@ -41,7 +41,7 @@ const CheckOutForm = ({ data, user }: Props) => {
             setIsLoading(false)
         } else if (paymentIntent && paymentIntent.status === "succeeded") {
             setIsLoading(false)
-            createOrder({ courseId: data._id, payment_info: paymentIntent })
+            await createOrder({ courseId: data._id, payment_info: paymentIntent })
         }
     }
 
@@ -72,10 +72,10 @@ const CheckOutForm = ({ data, user }: Props) => {
             <LinkAuthenticationElement id="link-authentication-element" />
             <PaymentElement id="payment-element" />
             {
-                isLoading ? <Button disabled>
-                    <Loader2 className="mr-2 h-4 mt-2 w-4 animate-spin" />
+                isLoading ? <Button className="mt-6" disabled>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Please wait
-                </Button> : <Button disabled={isLoading || !stripe || !elements} type="submit">Submit information <ArrowRight className="h-4 w-6 mt-2 text-white fill-white" /> </Button>
+                </Button> : <Button className="mt-6" disabled={isLoading || !stripe || !elements} type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>
             }
             {
                 message && (
@@ -85,22 +85,6 @@ const CheckOutForm = ({ data, user }: Props) => {
                     </div>
                 )
             }
-            {/* <button disabled={isLoading || !stripe || !elements} id="submit"> */}
-            {/* <span id="button-text" className={buttonVariants({ variant: "default" })}>
-                    {isLoading ? "Paying..." : "Pay Now"}
-                </span> */}
-            {/* Show any error or success message */}
-            {/* {
-                    message && (
-                        <div
-                            id="payment-message" className="text-red-600 font-Poppins pt-2">
-                            {message}
-                        </div>
-                    )
-                } */}
-            {/* </button> */}
-
-
         </form>
     );
 };
