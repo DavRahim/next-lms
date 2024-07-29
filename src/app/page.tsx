@@ -86,7 +86,6 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
       {/* customers section */}
       <section className='dark:bg-black bg-slate-100 grainy-dark py-24'>
         <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-32'>
@@ -520,7 +519,7 @@ export default function Home() {
           <PublicCourses />
         </MaxWidthWrapper>
       </section>
-
+      {/* Students Feedback */}
       <section className='bg-slate-100 grainy-dark py-24'>
         <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-20'>
           <div className=''>
@@ -649,7 +648,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
+      {/* Frequently Asked */}
       <section>
         <MaxWidthWrapper className='py-24'>
           <div className='mb-12 px-6 lg:px-8'>
@@ -724,8 +723,6 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-
-
     </div>
   );
 }
