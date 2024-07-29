@@ -1,23 +1,25 @@
 import { Icons } from "@/components/Icons";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { ArrowDown, Check, Star } from "lucide-react";
+import { ArrowDown, Check, CircleCheckBig, SquareCheckBig, Star } from "lucide-react";
 import Image from "next/image";
 import Profile from "@/components/Profile";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import PublicCourses from "@/components/course/PublicCourses";
+import { styles } from "@/lib/styles";
 
 export default function Home() {
   return (
-    <div className="background-gradient grainy-light">
-      <section className="dark:bg-black">
+    <div className={`${styles.lightTheme}`}>
+      {/* hero */}
+      <section className={`dark:${styles.darkTheme} pb-12`}>
         {/* Hero area */}
-        <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-4 xl:pt-12 lg:pb-52">
+        <MaxWidthWrapper className="pt-5 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-4">
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
             <div className='relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start'>
               <h1 className='relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight dark:text-white text-gray-900 text-5xl md:text-6xl lg:text-7xl'>
-                Journey Of Frontend Web Development
-                <span className='bg-green-600 px-2 text-white'>Custom</span>{' '}
-                Web Development
+                Start your
+                <span className='bg-green-600 px-2 text-white'>programming Journey</span>{' '}
+                with our Dedicated community!
               </h1>
               <p className='mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap'>
                 We Strongly Believe In Personalized Learning & Empower Individuals To Kick-Start Their Careers. There Is No Chance Of Falling Behind, With A Module-Wise Structured & Project Based Study Plan Packed With Quizzes, Assignments,
@@ -79,24 +81,24 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit'>
+          <div className='col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-10 lg:mx-0 lg:mt-20 h-fit'>
             <div className="mt-5 transform rounded border-2 border-indigo-600 transition duration-200 ease-out hover:scale-x-110 hover:scale-y-110">
-              <iframe src="https://www.youtube.com/embed/tw0JF-xVniU?si=qVXVGYFa80E50GpJ?rel=0" width={530} height={400} className="aspect-video w-full md:aspect-square"></iframe>
+              <iframe src="https://www.youtube.com/embed/tw0JF-xVniU?si=qVXVGYFa80E50GpJ?rel=0" width={630} height={500} className="aspect-video w-full md:aspect-square"></iframe>
             </div>
           </div>
         </MaxWidthWrapper>
       </section>
-      {/* customers section */}
-      <section className='dark:bg-black bg-slate-100 grainy-dark py-24'>
-        <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-32'>
+      {/* Effective Personalized */}
+      <section className={`dark:${styles.darkTheme} py-12`}>
+        <MaxWidthWrapper className='flex flex-col items-center gap-16'>
           <div className='flex flex-col lg:flex-row items-center gap-4 sm:gap-6'>
-            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
-              What our{' '}
+            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white dark:text-white'>
+              Effective{' '}
               <span className='relative px-2'>
-                customers{' '}
+                Personalized{' '}
                 <Icons.underline className='hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-green-500' />
               </span>{' '}
-              say
+              Learning
             </h2>
             <Image
               src='/logo-secendery.png'
@@ -114,17 +116,17 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
                       <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
                   <div className="h-full w-px bg-green-600"></div>
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="mb-2 text-lg font-bold">
                     Interactive Live & Recording Classes
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                     Learn Something New Everyday By Watching Recorded Conceptual Classes And Join Live Classes For Clearing Your Doubts.
                   </p>
                 </div>
@@ -132,17 +134,17 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
                       <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
                   <div className="h-full w-px bg-green-600"></div>
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="mb-2 text-lg font-bold">
                     Interactive Live & Recording Classes
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                     Learn Something New Everyday By Watching Recorded Conceptual Classes And Join Live Classes For Clearing Your Doubts.
                   </p>
                 </div>
@@ -150,17 +152,17 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
                       <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
                   <div className="h-full w-px bg-green-600"></div>
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="mb-2 text-lg font-bold">
                     Interactive Live & Recording Classes
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                     Learn Something New Everyday By Watching Recorded Conceptual Classes And Join Live Classes For Clearing Your Doubts.
                   </p>
                 </div>
@@ -168,17 +170,17 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
                       <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
                   <div className="h-full w-px bg-green-600"></div>
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="mb-2 text-lg font-bold">
                     Interactive Live & Recording Classes
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                     Learn Something New Everyday By Watching Recorded Conceptual Classes And Join Live Classes For Clearing Your Doubts.
                   </p>
                 </div>
@@ -186,17 +188,17 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
                       <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
                   <div className="h-full w-px bg-green-600"></div>
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="mb-2 text-lg font-bold">
                     Interactive Live & Recording Classes
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                     Learn Something New Everyday By Watching Recorded Conceptual Classes And Join Live Classes For Clearing Your Doubts.
                   </p>
                 </div>
@@ -204,13 +206,13 @@ export default function Home() {
               <div className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500">
-                      <ArrowDown className='h-4 w-4 text-green-600 fill-green-600' />
+                    <div className="border-offset-2 flex h-10 w-10 items-center justify-center rounded-full border border-green-500">
+                      <Check className='h-4 w-4 text-green-600 fill-green-600' />
                     </div>
                   </div>
 
                 </div>
-                <div className="pb-8 pt-1 text-gray-900">
+                <div className="pb-8 pt-1 text-gray-900 dark:text-white">
                   <p className="text-lg font-bold">
                     Unlimited Support
                   </p>
@@ -219,7 +221,7 @@ export default function Home() {
             </div>
 
             {/* image */}
-            <div className='relative mt-[130px] gap-4 lg:pr-8 xl:pr-20'>
+            <div className='relative gap-4 lg:pr-8 xl:pr-20'>
               <Image
                 src={'/banner.svg'}
                 className="md-max-w-sm h-auto object-cover"
@@ -232,18 +234,18 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
       {/* Step section */}
-      <section>
-        <MaxWidthWrapper className='py-24'>
+      <section className={`dark:${styles.darkTheme} py-12`}>
+        <MaxWidthWrapper className=''>
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
-              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white'>
                 What Are The Specialties Of{' '}
                 <span className='relative px-2 bg-green-600 text-white'>
                   your own case
                 </span>{' '}
                 now
               </h2>
-              <p className="text-lg text-gray-800">You Will Get From Us After Enrollment The Course</p>
+              <p className="text-lg text-gray-800 dark:text-white">You Will Get From Us After Enrollment The Course</p>
             </div>
           </div>
 
@@ -269,18 +271,18 @@ export default function Home() {
 
                 </div>
 
-                <div className="flex-auto text-gray-900">
+                <div className="flex-auto text-gray-900 dark:text-white">
                   <div className="flex flex-col items-center text-center md:flex-row">
                     <div
                       className="flex-auto"
                     >
-                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 md:hidden">
+                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 dark:text-white md:hidden">
                         <span className="text-gradient p-2">Step 1: Learning</span>
                       </div>
                       <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
                         Everyday Particular Chapter
                       </div>
-                      <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
+                      <div className="w-[100%] p-2 pb-6 text-gray-700 dark:text-white sm:w-auto md:w-auto lg:w-auto">
                         Everyday We Will Give You Access Only One Chapter For Your Productive Learning.There Is No Chance Of Falling Behind, With A Module-Wise Structured Study Plan Packed With Quizzes, Assignments & Practice Home Work For Interview Preparation.
                       </div>
 
@@ -320,7 +322,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex-auto text-gray-900">
+                <div className="flex-auto text-gray-900 dark:text-white">
                   <div className="flex flex-col items-center text-center md:flex-row">
                     <div>
                       <Image
@@ -334,13 +336,13 @@ export default function Home() {
                     <div
                       className="flex-auto"
                     >
-                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 md:hidden">
+                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 dark:text-white md:hidden">
                         <span className="text-gradient p-2">Step 1: Learning</span>
                       </div>
                       <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
                         Step By Step Project Based Teaching Method
                       </div>
-                      <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
+                      <div className="w-[100%] p-2 pb-6 text-gray-700 dark:text-white sm:w-auto md:w-auto lg:w-auto">
                         Everyday We Will Give You Access Only One Chapter For Your Productive Learning.There Is No Chance Of Falling Behind, With A Module-Wise Structured Study Plan Packed With Quizzes, Assignments & Practice Home Work For Interview Preparation.
                       </div>
                     </div>
@@ -378,18 +380,18 @@ export default function Home() {
 
                 </div>
 
-                <div className="flex-auto text-gray-900">
+                <div className="flex-auto text-gray-900 dark:text-white">
                   <div className="flex flex-col items-center text-center md:flex-row">
                     <div
                       className="flex-auto"
                     >
-                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 md:hidden">
+                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 dark:text-white md:hidden">
                         <span className="text-gradient p-2">Step 1: Learning</span>
                       </div>
                       <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
                         Critical Thinking Ability
                       </div>
-                      <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
+                      <div className="w-[100%] p-2 pb-6 text-gray-700 dark:text-white sm:w-auto md:w-auto lg:w-auto">
                         You Will Have A Practice Day After Every 2-3 Chapter. There Will Be A Conceptual Session On That Practice Day. So Not Only You Are Learning Or Practicing, But You Will Also Get Time To Think About How Exactly Programming Happens And You Can Get Ready For Problem-Solving And Real-Life Implementation.
                       </div>
 
@@ -424,12 +426,12 @@ export default function Home() {
                     <div className="text-3xl font-black">Step 4</div>
                     <div className="text-sm text-gray-500">IMPLEMENTATION </div>
                   </div>
-                  <div className="h-full border-r-4 border-transparent">
+                  {/* <div className="h-full border-r-4 border-transparent">
                     <div className="ml-4 h-full border-l-4 border-dashed border-green-700"></div>
-                  </div>
+                  </div> */}
                 </div>
 
-                <div className="flex-auto text-gray-900">
+                <div className="flex-auto text-gray-900 dark:text-white">
                   <div className="flex flex-col items-center text-center md:flex-row">
                     <div>
                       <Image
@@ -443,13 +445,13 @@ export default function Home() {
                     <div
                       className="flex-auto"
                     >
-                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 md:hidden">
+                      <div className="pt-1 text-sm font-normal uppercase text-gray-700 dark:text-white md:hidden">
                         <span className="text-gradient p-2">Step 1: Learning</span>
                       </div>
                       <div className="p-2 text-xl font-semibold capitalize sm:text-base md:text-3xl">
                         Started Journey Become A Junior Developer
                       </div>
-                      <div className="w-[100%] p-2 pb-6 text-gray-700 sm:w-auto md:w-auto lg:w-auto">
+                      <div className="w-[100%] p-2 pb-6 text-gray-700 dark:text-white sm:w-auto md:w-auto lg:w-auto">
                         Finally After 4-6 Month You Can Get Ready For IMPLEMENTATION Your Knowledge For Make Money By Job Or Freelancing. It s Not Easy But Not Impossible. I Know You Can Do That. We Will Always With You.
                       </div>
                     </div>
@@ -461,23 +463,23 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
       {/* Lead Instructor */}
-      <section className='bg-slate-100 grainy-dark py-24'>
-        <MaxWidthWrapper className='py-24'>
+      <section className={`dark:${styles.darkTheme} py-12`}>
+        <MaxWidthWrapper className="">
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
-              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white'>
                 Lead Instructor
               </h2>
             </div>
           </div>
 
           <div className="grid max-w-screen-lg lg:grid-cols-2 sm:mx-auto">
-            <div className="grid grid-cols-2 gap-2 FounderImages">
+            <div className="flex items-center FounderImages mb-8 lg:mb-0">
               <Profile />
             </div>
-            <div className="flex flex-col justify-center text-gray-900 border-l-2 border-indigo-500 ps-[50px] instructorDetailsBorder">
+            <div className="flex flex-col justify-center text-gray-900 dark:text-white border-l-2 border-green-500 ps-[50px] instructorDetailsBorder">
               <div>
-                <div className="text-sm text-gray-700 capitalize tracking-wide">
+                <div className="text-sm text-gray-700 dark:text-white capitalize tracking-wide">
                   <p> Md Abdur Rahim is afull stack web developer. They has been involved in web development and software profession for 5+ years.</p>
                   <br />
                   <p>  At the time of class 9, Out of love for programming and passion for teaching people, Eshan founded Hablu Programmer Platform in February 2021 which has around 600+ programming related video tutorials.</p>
@@ -502,11 +504,11 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
       {/* Opportunity course card */}
-      <section>
-        <MaxWidthWrapper className='py-24'>
+      <section className={`dark:${styles.darkTheme} py-12`}>
+        <MaxWidthWrapper>
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
-              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900 dark:text-white'>
                 ExpandYourCareer{' '}
                 <span className='relative px-2 bg-green-600 text-white'>
                   Opportunity
@@ -520,10 +522,10 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
       {/* Students Feedback */}
-      <section className='bg-slate-100 grainy-dark py-24'>
+      <section className={`dark:${styles.darkTheme} py-12`}>
         <MaxWidthWrapper className='flex flex-col items-center gap-16 sm:gap-20'>
           <div className=''>
-            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900'>
+            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white'>
               Students {" "}
               <span className='relative px-2'>
                 Feedback{' '}
@@ -531,7 +533,7 @@ export default function Home() {
               </span>{' '}
               say
             </h2>
-            <p className="text-[16px] font-Poppins text-center md:w-[40%] mx-auto text-gray-700">Our Students Are Our Strength, See What They Say About Us. Learners have always expressed their love for Hablu-Programmer.</p>
+            <p className="text-[16px] font-Poppins text-center md:w-[40%] mx-auto text-gray-700 dark:text-white">Our Students Are Our Strength, See What They Say About Us. Learners have always expressed their love for Hablu-Programmer.</p>
           </div>
           {/* card grid */}
           <div className='mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16'>
@@ -649,11 +651,11 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
       {/* Frequently Asked */}
-      <section>
-        <MaxWidthWrapper className='py-24'>
+      <section className={`dark:${styles.darkTheme} py-12`}>
+        <MaxWidthWrapper>
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
-              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-5xl text-gray-900 dark:text-white'>
                 Frequently Asked{' '}
                 <span className='relative px-2 bg-green-600 text-white'>
                   Questions

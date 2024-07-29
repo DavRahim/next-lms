@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
+import { styles } from '@/lib/styles'
 
 const Footer = () => {
   return (
-    <footer className='bg-white h-20 relative'>
+    <footer className={`bg-green-300/50 dark:${styles.darkTheme} h-20 relative`}>
       <MaxWidthWrapper>
         <div className='border-t border-gray-200' />
 
