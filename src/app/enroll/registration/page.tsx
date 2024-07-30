@@ -89,11 +89,45 @@ const Page = (props: Props) => {
             }
         }
     }, [isSuccess, error, data, toast])
+
+    // image show
+    const [imageShow, setImageShow] = useState<any>("");
+    const [baseImage, setBaseImage] = useState<any>("");
+    useEffect(() => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            const avatar = fileReader.result
+            if (fileReader.readyState === 2) {
+                setBaseImage(avatar)
+            }
+        }
+        if (imageShow) {
+            fileReader.readAsDataURL(imageShow.target.files[0]);
+        }
+    }, [imageShow, baseImage])
+
+    // image show
+
+
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         if (data.password !== data.confirmPassword) {
             return toast({
                 title: "Your Password Not Same!",
                 description: "Password & Confirm Password Same Value Plz!"
+            })
+        }
+        if (data.avatar.size >= 512001) {
+            return toast({
+                title: "Your Image Is Too Long!",
+                description: "Plz Photo size must be less than 0.5MB or 500KB and only .jpg, .jpeg or .png!"
+            })
+        }
+        if (data.avatar.type !== "image/jpeg" &&
+            data.avatar.type !== "image/jpg" &&
+            data.avatar.type !== "image/png") {
+            return toast({
+                title: "Your Image Format Is Not Valid!",
+                description: "Plz Photo size must be less than 0.5MB or 500KB and only .jpg, .jpeg or .png!"
             })
         }
         const formData = new FormData()
@@ -243,8 +277,8 @@ const Page = (props: Props) => {
                                             name="avatar"
                                             render={({ field }) => (
                                                 <FormItem className="flex gap-4">
-                                                    <Avatar>
-                                                        <AvatarImage src={"https://res.cloudinary.com/ds4wulbab/image/upload/v1719505881/scytljamvcvcls2boxzu.png"} alt="@shadcn" />
+                                                    <Avatar className="bg-green-300/50">
+                                                        <AvatarImage src={baseImage ? baseImage : "/girl.png"} alt="@shadcn" />
                                                         <AvatarFallback>CN</AvatarFallback>
                                                     </Avatar>
                                                     <div className="grid items-center gap-1.5">
@@ -255,6 +289,8 @@ const Page = (props: Props) => {
                                                         <Input accept="image/*" type="file" name="avatar" onChange={(event) => {
                                                             if (!event.target.files) return
                                                             field.onChange(event.target.files[0])
+                                                            setImageShow(event);
+
                                                         }} />
                                                     </div>
                                                     <FormMessage />

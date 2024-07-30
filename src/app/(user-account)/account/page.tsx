@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
-import { useUserUpdateMutation } from "@/redux/features/auth/authApi";
+import { useUpdateAvatarMutation, useUserUpdateMutation } from "@/redux/features/auth/authApi";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 type Props = {};
 
@@ -43,8 +43,9 @@ const Page = (props: Props) => {
     const user = !isLoading && userData?.data;
     const router = useRouter();
     const [userUpdate, { error, isSuccess }] = useUserUpdateMutation();
+    const [updateAvatar, { error: avatarError, isSuccess: avatarSuccess }] = useUpdateAvatarMutation()
     useEffect(() => {
-        if (isSuccess) {
+        if (isSuccess || avatarSuccess) {
             refetch();
             toast({
                 description: "user update successfully.",
@@ -55,19 +56,58 @@ const Page = (props: Props) => {
             if ("data" in error) {
                 toast({
                     variant: "destructive",
-                    title: "user update successfully.",
-                    description: "There was a problem with your request.",
+                    title: "user update Unsuccessfully.",
+                    description: "There was a problem with your request Data",
                 })
             }
         }
-    }, [isSuccess, error, toast, refetch, form]);
+        if (avatarError) {
+            if ("data" in avatarError) {
+                toast({
+                    variant: "destructive",
+                    title: "Avatar Update Unsuccessfully.",
+                    description: "There was a problem with your request avatar",
+                })
+            }
+        }
+
+    }, [isSuccess, error, toast, refetch, form, avatarError, avatarSuccess]);
+
+    // image show
+    const [imageShow, setImageShow] = useState<any>("");
+    const [baseImage, setBaseImage] = useState<any>("");
+    useEffect(() => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            const avatar = fileReader.result
+            if (fileReader.readyState === 2) {
+                setBaseImage(avatar)
+            }
+        }
+        if (imageShow) {
+            fileReader.readAsDataURL(imageShow.target.files[0]);
+        }
+    }, [imageShow, baseImage])
+    // image show
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        if (data.avatar.size >= 512001) {
+            return toast({
+                title: "Your Image Is Too Long!",
+                description: "Plz Photo size must be less than 0.5MB or 500KB and only .jpg, .jpeg or .png!"
+            })
+        }
+        if (data.avatar.type !== "image/jpeg" &&
+            data.avatar.type !== "image/jpg" &&
+            data.avatar.type !== "image/png") {
+            return toast({
+                title: "Your Image Format Is Not Valid!",
+                description: "Plz Photo size must be less than 0.5MB or 500KB and only .jpg, .jpeg or .png!"
+            })
+        }
         const formData = new FormData();
-        //  TODO: avatar update 
-        // formData.append("avatar", data.avatar)
-        // formData.append("discordUsername", data.discordUsername)
-        // formData.append("address", data.address)
+        formData.append("avatar", data.avatar);
+        await updateAvatar(formData);
         await userUpdate({ discordUsername: data.discordUsername, address: data.address })
     }
     if (!isLoading && !user) return router.push('/');
@@ -119,8 +159,8 @@ const Page = (props: Props) => {
                                     name="avatar"
                                     render={({ field }) => (
                                         <FormItem className="flex gap-4">
-                                            <Avatar>
-                                                <AvatarImage src={user?.avatar?.url ? user?.avatar?.url : "https://res.cloudinary.com/ds4wulbab/image/upload/v1719505881/scytljamvcvcls2boxzu.png"} alt="@shadcn" />
+                                            <Avatar className="bg-green-300/50">
+                                                <AvatarImage src={baseImage ? baseImage : user?.avatar?.url ? user?.avatar?.url : "/girl.png"} alt="@shadcn" />
                                                 <AvatarFallback>CN</AvatarFallback>
                                             </Avatar>
                                             <div className="grid items-center gap-1.5">
@@ -132,6 +172,7 @@ const Page = (props: Props) => {
                                                     onChange={(event) => {
                                                         if (!event.target.files) return
                                                         field.onChange(event.target.files[0])
+                                                        setImageShow(event);
                                                     }} />
                                             </div>
                                             <FormMessage />
@@ -196,7 +237,7 @@ const Page = (props: Props) => {
                                                 Necessary documents can be sent to this address through courier service. So provide correct address.
                                             </FormDescription>
                                             <FormControl>
-                                                <Textarea placeholder="7,Mohakhali, AK Khandakar Rd" {...field} />
+                                                <Textarea placeholder={user?.address} {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
