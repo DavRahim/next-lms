@@ -153,22 +153,22 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
     }
     return (
         <>
-            <div className="w-full md:pt-8 flex flex-col-reverse md:flex-row">
+            <div className="w-full md:pt-8 flex flex-col-reverse md:flex-row mx-2 sm:mx-0">
                 <div className="w-full md:w-[65%] md:pr-5">
-                    <h1 className="text-[35px] font-[500] text-black">
+                    <h1 className="text-[35px] font-[500] text-black dark:text-white">
                         {courseDetailsData?.name}
                     </h1>
                     <div className="flex items-center justify-between pt-3">
                         <div className="flex items-center justify-center">
                             <Ratings rating={4} />
-                            <h5 className="text-black"> {"("} {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} Ratings / 5 {")"}</h5>
+                            <h5 className="text-black dark:text-white"> {"("} {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} Ratings / 5 {")"}</h5>
                         </div>
-                        <h5 className="text-black">
+                        <h5 className="text-black dark:text-white">
                             {courseDetailsData?.purchased} Students
                         </h5>
                     </div>
                     <br />
-                    <h1 className="text-[25px] font-Poppins font-[600] text-black">
+                    <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
                         What you will learn from this Course ?
                     </h1>
                     <div>
@@ -176,9 +176,9 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                             courseDetailsData?.benefits?.map((item: any, index: number) => (
                                 <div key={index} className="w-full flex md:items-center py-2">
                                     <div className="w-[15px] mr-1">
-                                        <IoCheckmarkDoneOutline size={20} className="text-black" />
+                                        <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                                     </div>
-                                    <p className="pl-2 text-black">{item?.title}</p>
+                                    <p className="pl-2 text-black dark:text-white">{item?.title}</p>
                                 </div>
                             ))
                         }
@@ -188,28 +188,28 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                     {/* befit */}
                     {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You will be able to build a full stack multivendor E-commerce website</p>
+                        <p className="pl-2 text-black dark:text-white">You will be able to build a full stack multivendor E-commerce website</p>
                     </div> */}
                     {/* befit */}
                     {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You will learn the best practices of MERN stack</p>
+                        <p className="pl-2 text-black dark:text-white">You will learn the best practices of MERN stack</p>
                     </div> */}
                     {/* befit */}
                     {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You will learn how to build a chatting app with the power of socket io and MERN stack</p>
+                        <p className="pl-2 text-black dark:text-white">You will learn how to build a chatting app with the power of socket io and MERN stack</p>
                     </div> */}
                     {/* </div> */}
                     <br />
                     <br />
-                    <h1 className="text-[25px] font-Poppins font-[600] text-black">
+                    <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
                         What are the prerequisites for starting this Course ?
                     </h1>
                     {/* prerequisites */}
@@ -218,38 +218,38 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                             courseDetailsData?.prerequisites?.map((item: any, index: number) => (
                                 <div key={index} className="w-full flex md:items-center py-2">
                                     <div className="w-[15px] mr-1">
-                                        <IoCheckmarkDoneOutline size={20} className="text-black" />
+                                        <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                                     </div>
-                                    <p className="pl-2 text-black">{item.title}</p>
+                                    <p className="pl-2 text-black dark:text-white">{item.title}</p>
                                 </div>
                             ))
                         }
                         {/* pre1 */}
                         {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You need basic knowledge of MERN stack</p>
+                        <p className="pl-2 text-black dark:text-white">You need basic knowledge of MERN stack</p>
                     </div> */}
                         {/* pre1 */}
                         {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You need to complete any simple MERN project before</p>
+                        <p className="pl-2 text-black dark:text-white">You need to complete any simple MERN project before</p>
                     </div> */}
                         {/* pre1 */}
                         {/* <div className="w-full flex md:items-center py-2">
                         <div className="w-[15px] mr-1">
-                            <IoCheckmarkDoneOutline size={20} className="text-black" />
+                            <IoCheckmarkDoneOutline size={20} className="text-black dark:text-white" />
                         </div>
-                        <p className="pl-2 text-black">You need knowledge of full stack like how to create backend server how its work and how to connect in frontend</p>
+                        <p className="pl-2 text-black dark:text-white">You need knowledge of full stack like how to create backend server how its work and how to connect in frontend</p>
                     </div> */}
                     </div>
                     <br />
                     <br />
                     <div>
-                        <h1 className="text-[25px] font-Poppins font-[600] text-black">
+                        <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
                             Course Overview
                         </h1>
                         {/* course content list */}
@@ -259,10 +259,10 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                     <br />
                     <br />
                     <div className="w-full">
-                        <h1 className="text-[25px] font-Poppins font-[600] text-black">
+                        <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
                             Course Details
                         </h1>
-                        <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden text-black">{courseDetailsData?.description}</p>
+                        <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden text-black dark:text-white">{courseDetailsData?.description}</p>
                     </div>
                     <br />
                     <br />
@@ -270,7 +270,7 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                         <div className="md:flex items-center">
                             <Ratings rating={courseDetailsData?.rating} />
                             <div className="mb-2 md:mb-[unset]">
-                                <h5 className="text-[25px] font-Poppins text-black">
+                                <h5 className="text-[25px] font-Poppins text-black dark:text-white">
                                     {Number.isInteger(courseDetailsData?.ratings) ? courseDetailsData?.rating?.toFixed(1) : courseDetailsData?.rating?.toFixed(2)} {' '} Course Rating . {courseDetailsData?.reviews?.length} Reviews
                                 </h5>
                             </div>
@@ -351,15 +351,15 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                             videoUrl={courseDetailsData?.demoUrl}
                         />
                         <div className="flex items-center">
-                            <h1 className="pt-5 text-[25px] text-black">
+                            <h1 className="pt-5 text-[25px] text-black dark:text-white">
                                 {courseDetailsData?.price === 0 ? "Free" : courseDetailsData?.price + "$"}
                                 {/* Free */}
                             </h1>
-                            <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 text-black">
+                            <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 text-black dark:text-white">
                                 {courseDetailsData?.estimatePrice} $
                                 {/* 90 D */}
                             </h5>
-                            <h4 className="pl-5 pt-4 text-[22px] text-black">
+                            <h4 className="pl-5 pt-4 text-[22px] text-black dark:text-white">
                                 {discountPercentagePrice} % Off
                                 {/* 70 % OFF */}
                             </h4>
@@ -383,16 +383,16 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                             )}
                         </div>
                         <br />
-                        <p className="pb-1 text-black">
+                        <p className="pb-1 text-black dark:text-white">
                             Source code included
                         </p>
-                        <p className="pb-1 text-black">
+                        <p className="pb-1 text-black dark:text-white">
                             Full Lifetime access
                         </p>
-                        <p className="pb-1 text-black">
+                        <p className="pb-1 text-black dark:text-white">
                             Certificate of Completion
                         </p>
-                        <p className="pb-3 md:pb-1 text-black">
+                        <p className="pb-3 md:pb-1 text-black dark:text-white">
                             Premium support
                         </p>
                     </div>
@@ -403,7 +403,7 @@ const CourseDetails = ({ courseDetailsData, stripePromise, clientSecret }: Props
                     <div className="w-full h-screen bg-[#00000036] fixed top-0 left-0 z-50 flex items-center justify-center">
                         <div className="w-[500px] min-h-[500px] bg-white rounded-xl shadow p-3">
                             <div className="w-full flex justify-end">
-                                <IoCloseOutline size={40} className="text-black cursor-pointer" onClick={() => setOpen(false)} />
+                                <IoCloseOutline size={40} className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
                             </div>
                             <div className="w-full ">
                                 {

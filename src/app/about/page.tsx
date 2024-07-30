@@ -1,10 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { styles } from "@/lib/styles";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
   return (
+    <section className={`dark:${styles.darkTheme} min-h-screen`}>
     <MaxWidthWrapper>
       <br />
       <h1 className="text-[25px] font-[500] text-center py-2 md:!text-[45px]">What is <span className="text-[#16A34A]">Rs-LMS?</span></h1>
@@ -35,6 +37,7 @@ const Page = (props: Props) => {
         <br />
       </div>
     </MaxWidthWrapper>
+    </section>
   );
 };
 

@@ -17,29 +17,29 @@ const Profile = (props: Props) => {
                 effect={'cards'}
                 grabCursor={true}
                 modules={[EffectCards]}
-                // autoplay={{
-                //   delay: 2500,
-                //   disableOnInteraction: false,
-                // }}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
                 className="mySwiper w-[320px] h-[350px]"
             >
                 <SwiperSlide
-                    className='flex items-center justify-center rounded-2xl border-[5px] border-[#FF6347]  bg-red-400'
+                    className='flex items-center justify-center rounded-2xl border-[5px] border-green-400 bg-green-400'
                 >
                     <Image
                         alt='swiper image'
-                        src={'/profile1.png'}
+                        src={'/profile-image.jpg'}
                         className='w-full h-full object-fill'
                         width={320}
                         height={350}
                     />
                 </SwiperSlide>
                 <SwiperSlide
-                    className='flex items-center justify-center rounded-2xl bg-red-400 border-[5px] border-[#FF6347] '
+                    className='flex items-center justify-center rounded-2xl bg-green-400 border-[5px] border-green-400 '
                 >
                     <Image
                         alt='swiper image'
-                        src={'/profile1.png'}
+                        src={'/profile-image.jpg'}
                         className='w-full h-full object-fill'
                         width={320}
                         height={350}

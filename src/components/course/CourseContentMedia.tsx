@@ -227,7 +227,7 @@ const CourseContentMedia = ({ activeVideo, data, setActiveVideo, user, id, refet
         </Button>
       </div>
       {/* title */}
-      <h1 className="pt-2 text-black text-[25px] font-[600]">{data[activeVideo].title}
+      <h1 className="pt-2 text-black dark:text-white text-[25px] font-[600]">{data[activeVideo].title}
       </h1>
       <br />
 

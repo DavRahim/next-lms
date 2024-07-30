@@ -15,6 +15,7 @@ import { ToastAction } from "@/components/ui/toast";
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 import { Eye, EyeOff } from "lucide-react";
+import { styles } from "@/lib/styles";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -65,11 +66,11 @@ const Page = () => {
     const [passwordShow, setPasswordShow] = useState("password");
     if (user) return router.push('/');
     return (
-        <MaxWidthWrapper>
-            <div className="flex flex-col gap-6 lg:flex-row lg:gap-20 py-10">
+        <section className={`dark:${styles.darkTheme} min-h-screen`}>
+            <MaxWidthWrapper className="flex flex-col gap-6 lg:flex-row lg:gap-20 py-10">
                 <div className="w-full space-y-8">
                     <div>
-                        <h1 className="text-center text-gray-900 text-4xl font-semibold">
+                        <h1 className="text-center text-gray-900 dark:text-white text-4xl font-semibold">
                             <span className="text-green-600">Login</span> RsLms
                         </h1>
                         <p className="subtitle mx-auto w-full text-center">Do not share your login information with anyone</p>
@@ -131,9 +132,8 @@ const Page = () => {
                         />
                     </div>
                 </div>
-
-            </div>
-        </MaxWidthWrapper>
+            </MaxWidthWrapper>
+        </section>
     );
 };
 

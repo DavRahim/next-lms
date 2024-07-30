@@ -2,6 +2,7 @@
 
 import CourseContent from "@/components/course/CourseContent";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { styles } from "@/lib/styles";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { redirect } from "next/navigation";
 import React, { useEffect } from "react";
@@ -30,17 +31,19 @@ const Page = ({ params }: Props) => {
 
 
     return (
-        <MaxWidthWrapper>
-            {
-                isLoading ? (
-                    // TODO: loading component
-                    <h1>Loading</h1>
-                ) : (
-                    <>
-                        <CourseContent id={id} user={userData} />
-                    </>)
-            }
-        </MaxWidthWrapper>
+        <section className={`dark:${styles.darkTheme} min-h-screen`}>
+            <MaxWidthWrapper>
+                {
+                    isLoading ? (
+                        // TODO: loading component
+                        <h1>Loading</h1>
+                    ) : (
+                        <>
+                            <CourseContent id={id} user={userData} />
+                        </>)
+                }
+            </MaxWidthWrapper>
+        </section>
     );
 };
 

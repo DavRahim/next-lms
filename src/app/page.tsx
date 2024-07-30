@@ -1,6 +1,6 @@
 import { Icons } from "@/components/Icons";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { ArrowDown, Check, CircleCheckBig, SquareCheckBig, Star } from "lucide-react";
+import { ArrowDown, Check, Star } from "lucide-react";
 import Image from "next/image";
 import Profile from "@/components/Profile";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -9,9 +9,9 @@ import { styles } from "@/lib/styles";
 
 export default function Home() {
   return (
-    <div className={`${styles.lightTheme}`}>
+    <div>
       {/* hero */}
-      <section className={`dark:${styles.darkTheme} pb-12`}>
+      <section className={`dark:bg-gradient-to-r from-slate-900 to-slate-700 pb-12`}>
         {/* Hero area */}
         <MaxWidthWrapper className="pt-5 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-4">
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
@@ -92,7 +92,7 @@ export default function Home() {
       <section className={`dark:${styles.darkTheme} py-12`}>
         <MaxWidthWrapper className='flex flex-col items-center gap-16'>
           <div className='flex flex-col lg:flex-row items-center gap-4 sm:gap-6'>
-            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white dark:text-white'>
+            <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white'>
               Effective{' '}
               <span className='relative px-2'>
                 Personalized{' '}
@@ -221,7 +221,7 @@ export default function Home() {
             </div>
 
             {/* image */}
-            <div className='relative gap-4 lg:pr-8 xl:pr-20'>
+            <div className='relative sm:mt-[180px] gap-4 sm: lg:pr-8 xl:pr-20'>
               <Image
                 src={'/banner.svg'}
                 className="md-max-w-sm h-auto object-cover"
