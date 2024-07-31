@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Heading from "@/lib/Heading";
 import { styles } from "@/lib/styles";
 import React from "react";
 
@@ -7,6 +8,8 @@ type Props = {};
 const Page = (props: Props) => {
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
+            <Heading title="Policy "
+                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <MaxWidthWrapper>
                 <div>
                     <h2 className="text-[25px] text-gray-900 dark:text-white 

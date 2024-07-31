@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { useUpdateAvatarMutation, useUserUpdateMutation } from "@/redux/features/auth/authApi";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import Heading from "@/lib/Heading";
 type Props = {};
 
 const FormSchema = z.object({
@@ -110,9 +111,11 @@ const Page = (props: Props) => {
         await updateAvatar(formData);
         await userUpdate({ discordUsername: data.discordUsername, address: data.address })
     }
-    if (!isLoading && !user) return router.push('/');
+    if (!isLoading && !user) return router.push('/login');
     return (
         <>
+        <Heading title="Account"
+        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <div className="col-span-10">
                 <div className="">
                     <h2 className="text-[25px] font-semibold">Profile update</h2>

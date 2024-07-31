@@ -3,6 +3,7 @@ import CourseDetails from "./CourseDetails";
 import { useGetCoursesDetailsQuery } from "@/redux/features/courses/coursesApi";
 import { useCreatePaymentIntentMutation, useGetStripePublishAbleKeyQuery } from "@/redux/features/orders/ordersApi";
 import { loadStripe } from "@stripe/stripe-js";
+import Loader from "@/lib/Loader";
 
 
 type Props = {
@@ -40,8 +41,7 @@ const CourseDetailsPage = ({ id }: Props) => {
         <>
             {
                 isLoading ? (
-                    // TODO: Loading components
-                    <h1>Loading ...</h1>
+                    <Loader />
                 ) : (
                     stripePromise && (
                         <CourseDetails courseDetailsData={courseDetailsData} stripePromise={stripePromise} clientSecret={clientSecret} />

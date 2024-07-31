@@ -18,6 +18,7 @@ import { useRegistrationMutation } from "@/redux/features/auth/authApi";
 import { useSelector } from "react-redux";
 import Verification from "@/components/Verification";
 import { useRouter } from "next/navigation";
+import Heading from "@/lib/Heading";
 type Props = {};
 
 const FormSchema = z.object({
@@ -147,6 +148,8 @@ const Page = (props: Props) => {
     if (user) return router.push('/');
     return (
         <>
+            <Heading title="Registration"
+                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             {verify ?
                 <>
                     <Verification successData={data} />

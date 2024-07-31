@@ -6,10 +6,13 @@ import Profile from "@/components/Profile";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import PublicCourses from "@/components/course/PublicCourses";
 import { styles } from "@/lib/styles";
+import Heading from "@/lib/Heading";
 
 export default function Home() {
   return (
     <div>
+      <Heading title="Learning Home"
+        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
       {/* hero */}
       <section className={`dark:bg-gradient-to-r from-slate-900 to-slate-700 pb-12`}>
         {/* Hero area */}

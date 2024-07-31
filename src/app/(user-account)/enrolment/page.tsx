@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Heading from "@/lib/Heading";
 import React from "react";
 
 type Props = {};
@@ -17,6 +18,8 @@ const Page = (props: Props) => {
   ]
   return (
     <div className="col-span-10">
+      <Heading title="Enrolment"
+        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
       <div className="">
         <h2 className="text-[25px] font-semibold">Course Enrollment</h2>
         <h5>Courses you have enrolled in on our platform</h5>

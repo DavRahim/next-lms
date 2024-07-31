@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Heading from "@/lib/Heading";
 import { styles } from "@/lib/styles";
 import React from "react";
 
@@ -7,6 +8,8 @@ type Props = {};
 const Page = (props: Props) => {
   return (
     <section className={`dark:${styles.darkTheme} min-h-screen`}>
+      <Heading title="About Us"
+        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
     <MaxWidthWrapper>
       <br />
       <h1 className="text-[25px] font-[500] text-center py-2 md:!text-[45px]">What is <span className="text-[#16A34A]">Rs-LMS?</span></h1>

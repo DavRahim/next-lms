@@ -33,14 +33,8 @@ const Navbar = (props: Props) => {
     }
   }, [isSuccess, toast, refetch]);
 
-  // TODO: Dark work
 
   const { setTheme } = useTheme()
-  const handleDarkMode = () => {
-    toast({
-      description: "Dark Mode Is Coming Soon!",
-    })
-  }
   return (
     <nav className={`sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-green-300/50
    backdrop-blur-lg transition-all dark:${styles.darkTheme}`}>

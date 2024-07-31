@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 import { Eye, EyeOff } from "lucide-react";
 import { styles } from "@/lib/styles";
+import Heading from "@/lib/Heading";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -45,7 +46,7 @@ const Page = () => {
         if (isSuccess && loginData) {
             toast({
                 title: "Uh oh! YOU LOGIN SUCCESSFULLY.",
-                description: "There was a problem with your request.",
+                description: "You are login success. Access your course.!",
             })
             router.push('/');
         } else if (error) {
@@ -64,9 +65,11 @@ const Page = () => {
         await login({ email: data.email, password: data.password })
     }
     const [passwordShow, setPasswordShow] = useState("password");
-    if (user) return router.push('/');
+    if (user) return router.push('/account');
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
+            <Heading title="Login "
+                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <MaxWidthWrapper className="flex flex-col gap-6 lg:flex-row lg:gap-20 py-10">
                 <div className="w-full space-y-8">
                     <div>

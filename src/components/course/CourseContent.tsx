@@ -2,6 +2,7 @@ import { useGetCourseContentQuery } from "@/redux/features/courses/coursesApi";
 import React, { useState } from "react";
 import CourseContentList from "./CourseContentList";
 import CourseContentMedia from "./CourseContentMedia";
+import Loader from "@/lib/Loader";
 
 type Props = {
     id: String;
@@ -15,8 +16,7 @@ const CourseContent = ({ id, user }: Props) => {
         <>
             {
                 isLoading ? (
-                    // TODO: loading component 
-                    <h1>Loading Coming soong</h1>
+                    <Loader />
                 ) : (
                     <div className="w-full flex">
                         <div className="w-full md:w-[70%]">
