@@ -1,5 +1,6 @@
 "use client"
 
+import { Metadata } from "next";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -19,6 +20,14 @@ import { useSelector } from "react-redux";
 import Verification from "@/components/Verification";
 import { useRouter } from "next/navigation";
 import Heading from "@/lib/Heading";
+
+
+export const metadata: Metadata = {
+    title: "Learning Registration | RS LMS",
+    description: "E-Learning is platform for student to learn and get help form teachers",
+    keywords: "Programming, Redux, Next js, Javascript"
+};
+
 type Props = {};
 
 const FormSchema = z.object({
@@ -148,8 +157,6 @@ const Page = (props: Props) => {
     if (user) return router.push('/');
     return (
         <>
-            <Heading title="Registration"
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             {verify ?
                 <>
                     <Verification successData={data} />

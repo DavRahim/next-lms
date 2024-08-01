@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Icons } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
 import Heading from "@/lib/Heading";
@@ -5,13 +6,18 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+export const metadata: Metadata = {
+    title: "Learning Instructions | RS LMS",
+    description: "E-Learning is platform for student to learn and get help form teachers",
+    keywords: "Programming, Redux, Next js, Javascript"
+};
+
+
 type Props = {};
 
 const Page = (props: Props) => {
     return (
         <>
-            <Heading title="Instructions "
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <div className='my-10'>
                 <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 dark:text-white'>
                     <span className='relative px-2'>

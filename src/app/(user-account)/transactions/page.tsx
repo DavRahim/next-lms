@@ -1,7 +1,6 @@
 "use client"
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Heading from "@/lib/Heading";
 import { useGetUserOrdersQuery } from "@/redux/features/orders/ordersApi";
 import React from "react";
 
@@ -23,8 +22,6 @@ const Page = (props: Props) => {
     const { data: ordersData, isLoading, error } = useGetUserOrdersQuery({});
     return (
         <>
-            <Heading title="Transactions"
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             {
                 isLoading ? (<h2>Loading...</h2>) : (
                     <div className="col-span-10">

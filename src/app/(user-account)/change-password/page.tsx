@@ -10,9 +10,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
-import Heading from "@/lib/Heading";
-
 type Props = {};
 
 const FormSchema = z.object({
@@ -57,8 +54,6 @@ const Page = (props: Props) => {
     }, [isSuccess, toast, error, form])
     return (
         <div className="col-span-10">
-            <Heading title="Change Password"
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <div className="">
                 <h2 className="text-[25px] font-semibold">Change password</h2>
                 <h5>Do not share your password with anyone</h5>

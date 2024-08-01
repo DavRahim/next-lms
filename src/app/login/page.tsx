@@ -27,9 +27,6 @@ const FormSchema = z.object({
     })
 })
 
-
-
-
 const Page = () => {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -68,8 +65,6 @@ const Page = () => {
     if (user) return router.push('/account');
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
-            <Heading title="Login "
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <MaxWidthWrapper className="flex flex-col gap-6 lg:flex-row lg:gap-20 py-10">
                 <div className="w-full space-y-8">
                     <div>

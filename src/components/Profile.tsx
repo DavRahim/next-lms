@@ -39,7 +39,7 @@ const Profile = (props: Props) => {
                 >
                     <Image
                         alt='swiper image'
-                        src={'/profile-image.jpg'}
+                        src={'/profile-image1.png'}
                         className='w-full h-full object-fill'
                         width={320}
                         height={350}

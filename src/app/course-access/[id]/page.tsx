@@ -7,9 +7,6 @@ import Loader from "@/lib/Loader";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { redirect } from "next/navigation";
 import React, { useEffect } from "react";
-import Heading from "@/lib/Heading";
-
-
 
 type Props = {
     params: any
@@ -36,8 +33,6 @@ const Page = ({ params }: Props) => {
     if (!isLoading && !user) return redirect('/login');
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
-            <Heading title="Enjoy Learn More"
-                description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <MaxWidthWrapper>
                 {
                     isLoading ? (

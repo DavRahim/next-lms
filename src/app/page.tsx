@@ -11,8 +11,6 @@ import Heading from "@/lib/Heading";
 export default function Home() {
   return (
     <div>
-      <Heading title="Learning Home"
-        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
       {/* hero */}
       <section className={`dark:bg-gradient-to-r from-slate-900 to-slate-700 pb-12`}>
         {/* Hero area */}

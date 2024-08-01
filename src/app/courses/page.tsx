@@ -13,8 +13,6 @@ const Page = (props: Props) => {
     const { data: courses, isLoading } = useGetUsersAllCoursesQuery(undefined, {});
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
-            <Heading title="Courses"
-        description="E-Learning is platform for student to learn and get help form teachers" keywords="Programming, Redux" />
             <MaxWidthWrapper className='flex-1 flex flex-col'>
                 {
                     isLoading ? <Loader /> : (<> <div className="w-full flex items-center flex-wrap my-7">
