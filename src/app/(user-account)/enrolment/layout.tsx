@@ -1,8 +1,6 @@
-"use client"
+
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 import React from "react";
-import { useSelector } from "react-redux";
 
 export const metadata: Metadata = {
     title: "Learning Enrolment | RS LMS",
