@@ -103,7 +103,6 @@ const Page = (props: Props) => {
                             Please wait
                         </Button>) : (<Button className="mt-9" type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>)
                     }
-
                 </form>
             </Form>
         </div>

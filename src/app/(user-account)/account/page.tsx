@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { redirect, useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { useUpdateAvatarMutation, useUserUpdateMutation } from "@/redux/features/auth/authApi";
@@ -41,11 +41,10 @@ const Page = (props: Props) => {
         },
     });
     const { toast } = useToast();
-    const { user:user1 } = useSelector((state: any) => state.auth)
     const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
     const user = !isLoading && userData?.data;
     const router = useRouter();
-    const [userUpdate, { error, isSuccess }] = useUserUpdateMutation();
+    const [userUpdate, { error, isLoading:updateUserLoading, isSuccess }] = useUserUpdateMutation();
     const [updateAvatar, { error: avatarError, isSuccess: avatarSuccess }] = useUpdateAvatarMutation()
     useEffect(() => {
         if (isSuccess || avatarSuccess) {
@@ -113,8 +112,7 @@ const Page = (props: Props) => {
         await updateAvatar(formData);
         await userUpdate({ discordUsername: data.discordUsername, address: data.address })
     }
-    if (!user1) return redirect('/login');
-    // if (!isLoading && !user) return router.push('/login');
+    if (!isLoading && !user) return router.push('/login');
     return (
         <>
             <div className="col-span-10">
@@ -247,7 +245,13 @@ const Page = (props: Props) => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button className="mt-9" type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>
+                                {
+                                    updateUserLoading && avatarSuccess ? (<Button disabled>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Please wait
+                                    </Button>) : (<Button className="mt-9" type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button>)
+                                }
+                                {/* <Button className="mt-9" type="submit">Submit information <ArrowRight className="h-4 w-6 text-white fill-white" /> </Button> */}
                             </div>
                         </div>
                     </form>

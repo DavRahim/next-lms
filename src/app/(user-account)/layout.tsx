@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import { BadgeDollarSign, BookOpenCheck, LockKeyhole, UserRoundSearch } from "lucide-react";
 import Link from "next/link";
 import { styles } from "@/lib/styles";
-import { useSelector } from "react-redux";
 import { redirect } from "next/navigation";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import Loader from "@/lib/Loader";
@@ -17,9 +16,8 @@ const UserRootLayout = ({
 }>) => {
     
     const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
-    // const user = !isLoading && userData?.data;
-    const { user } = useSelector((state: any) => state.auth)
-    if (!user) return redirect('/login');
+    const user = !isLoading && userData?.data;
+    if (!isLoading && !user) return redirect('/login');
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
             <MaxWidthWrapper>

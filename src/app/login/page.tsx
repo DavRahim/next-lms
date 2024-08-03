@@ -16,7 +16,6 @@ import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 import { Eye, EyeOff } from "lucide-react";
 import { styles } from "@/lib/styles";
-import Heading from "@/lib/Heading";
 
 const FormSchema = z.object({
     email: z.string().min(2, {
