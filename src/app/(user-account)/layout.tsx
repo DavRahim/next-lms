@@ -15,9 +15,11 @@ const UserRootLayout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
+    
     const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
-    const user = !isLoading && userData?.data;
-    if (!isLoading && !user) return redirect('/login');
+    // const user = !isLoading && userData?.data;
+    const { user } = useSelector((state: any) => state.auth)
+    if (!user) return redirect('/login');
     return (
         <section className={`dark:${styles.darkTheme} min-h-screen`}>
             <MaxWidthWrapper>
