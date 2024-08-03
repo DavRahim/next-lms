@@ -9,9 +9,8 @@ import { useSelector } from "react-redux";
 type Props = {};
 
 const Page = (props: Props) => {
-    const { user } = useSelector((state: any) => state.auth)
     // const invoices = [
-    //     {
+        //     {
     //         _id: "001",
     //         course: "Think in a redux way",
     //         date: "22 Jul 2023 08:08:59 PM	",
@@ -23,6 +22,7 @@ const Page = (props: Props) => {
     //     }
     // ]
     const { data: ordersData, isLoading, error } = useGetUserOrdersQuery({});
+    const { user } = useSelector((state: any) => state.auth)
     if (!user) return redirect('/login');
     return (
         <>
