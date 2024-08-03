@@ -5,10 +5,14 @@ export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_SERVER_URL,
+        prepareHeaders: (headers, { getState }) => {
+            headers.set('Access-Control-Allow-Origin', '*')
+            return headers
+        }
     }),
     endpoints: (builder) => ({
         refreshToken: builder.query({
-            query: (data) => ({
+            query: () => ({
                 url: "/users/refresh-token",
                 method: "POST",
                 credentials: "include" as const
