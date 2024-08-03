@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
 import { useToast } from "@/components/ui/use-toast";
+import { useSelector } from "react-redux";
+import { redirect } from "next/navigation";
 type Props = {};
 
 const FormSchema = z.object({
@@ -29,6 +31,7 @@ const Page = (props: Props) => {
             newPassword: ""
         },
     });
+    const { user } = useSelector((state: any) => state.auth)
     const { toast } = useToast();
     const [changePassword, { isLoading, error, isSuccess }] = useChangePasswordMutation();
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
@@ -52,6 +55,7 @@ const Page = (props: Props) => {
             }
         }
     }, [isSuccess, toast, error, form])
+    if (!user) return redirect('/login');
     return (
         <div className="col-span-10">
             <div className="">

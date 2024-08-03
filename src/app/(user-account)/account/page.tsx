@@ -12,10 +12,11 @@ import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { useUpdateAvatarMutation, useUserUpdateMutation } from "@/redux/features/auth/authApi";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
@@ -40,6 +41,7 @@ const Page = (props: Props) => {
         },
     });
     const { toast } = useToast();
+    const { user:user1 } = useSelector((state: any) => state.auth)
     const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
     const user = !isLoading && userData?.data;
     const router = useRouter();
@@ -111,6 +113,7 @@ const Page = (props: Props) => {
         await updateAvatar(formData);
         await userUpdate({ discordUsername: data.discordUsername, address: data.address })
     }
+    if (!user1) return redirect('/login');
     // if (!isLoading && !user) return router.push('/login');
     return (
         <>

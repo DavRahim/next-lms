@@ -2,11 +2,14 @@
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useGetUserOrdersQuery } from "@/redux/features/orders/ordersApi";
+import { redirect } from "next/navigation";
 import React from "react";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
 const Page = (props: Props) => {
+    const { user } = useSelector((state: any) => state.auth)
     // const invoices = [
     //     {
     //         _id: "001",
@@ -20,6 +23,7 @@ const Page = (props: Props) => {
     //     }
     // ]
     const { data: ordersData, isLoading, error } = useGetUserOrdersQuery({});
+    if (!user) return redirect('/login');
     return (
         <>
             {

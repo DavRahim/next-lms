@@ -17,8 +17,6 @@ const CourseLayout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    const { user } = useSelector((state: any) => state.auth)
-    if (!user) return redirect('/login');
     return <>{children}</>;
 };
 

@@ -1,8 +1,6 @@
-"use client"
+
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 import React from "react";
-import { useSelector } from "react-redux";
 
 export const metadata: Metadata = {
     title: "Learning Change Password | RS LMS",
@@ -17,8 +15,6 @@ const CourseLayout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    const { user } = useSelector((state: any) => state.auth)
-    if (!user) return redirect('/login');
     return <>{children}</>;
 };
 
