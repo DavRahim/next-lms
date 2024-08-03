@@ -111,7 +111,7 @@ const Page = (props: Props) => {
         await updateAvatar(formData);
         await userUpdate({ discordUsername: data.discordUsername, address: data.address })
     }
-    if (!isLoading && !user) return router.push('/login');
+    // if (!isLoading && !user) return router.push('/login');
     return (
         <>
             <div className="col-span-10">
