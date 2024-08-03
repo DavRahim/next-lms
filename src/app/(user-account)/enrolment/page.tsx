@@ -1,8 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 
 
@@ -19,8 +19,8 @@ const Page = (props: Props) => {
       Certificate: "N/A"
     }
   ]
-  const { user } = useSelector((state: any) => state.auth)
-  if (!user) return redirect('/login');
+  // const { user } = useSelector((state: any) => state.auth)
+  // if (!user) return redirect('/login');
   return (
     <div className="col-span-10">
       <div className="">
