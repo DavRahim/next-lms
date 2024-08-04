@@ -18,7 +18,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const { user } = useSelector((state: any) => state.auth)
-  const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {});
+  const { data: userData, isLoading, isError, refetch } = useLoadUserQuery(undefined, {});
   const [logoutUser, { isSuccess }] = useLogoutUserMutation();
   const { toast } = useToast()
   const logOut = async () => {
@@ -95,7 +95,7 @@ const Navbar = (props: Props) => {
             </div>
             <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
             {
-              isLoading ? ("") : (user ? (
+              isLoading && isError ? ("") : (user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Avatar className="border-[2px] border-green-500 shadow-2xl">
